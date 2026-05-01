@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="55%" stop-color="#00150e"/>
+      <stop offset="100%" stop-color="#001f15"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="85%" cy="15%" r="55%">
+      <stop offset="0%" stop-color="#268e6b" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#268e6b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="10%" cy="90%" r="40%">
+      <stop offset="0%" stop-color="#003d2b" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#003d2b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Logo badge -->
+  <rect x="80" y="62" width="60" height="60" rx="14" fill="#003d2b" stroke="#80c0aa" stroke-width="1.5" stroke-opacity="0.45"/>
+  <text x="110" y="103" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="900" fill="#ffffff" letter-spacing="-1">CE</text>
+
+  <!-- Brand name -->
+  <text x="156" y="103" font-family="system-ui,-apple-system,sans-serif" font-size="26" font-weight="700" fill="#ffffff" letter-spacing="-0.5">CapaciteEmprunt</text>
+
+  <!-- Badge pill -->
+  <rect x="80" y="168" width="524" height="38" rx="19" fill="#003d2b" fill-opacity="0.6" stroke="#80c0aa" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="342" y="192" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="600" fill="#80c0aa" letter-spacing="2.5">OUTIL GRATUIT · RÈGLE HCSF 2026 · CALCUL INSTANTANÉ</text>
+
+  <!-- Main heading line 1 -->
+  <text x="80" y="298" font-family="system-ui,-apple-system,sans-serif" font-size="76" font-weight="800" fill="#ffffff" letter-spacing="-2.5">Calculez votre</text>
+
+  <!-- Main heading line 2 - brand color -->
+  <text x="80" y="386" font-family="system-ui,-apple-system,sans-serif" font-size="76" font-weight="800" fill="#80c0aa" letter-spacing="-2.5">capacité d'emprunt</text>
+
+  <!-- Main heading line 3 -->
+  <text x="80" y="474" font-family="system-ui,-apple-system,sans-serif" font-size="76" font-weight="800" fill="#ffffff" letter-spacing="-2.5">immobilier</text>
+
+  <!-- Footer pills -->
+  <rect x="80" y="526" width="118" height="38" rx="19" fill="#003d2b" fill-opacity="0.5" stroke="#80c0aa" stroke-width="1" stroke-opacity="0.25"/>
+  <text x="139" y="550" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="rgba(255,255,255,0.72)">✓ Gratuit</text>
+
+  <rect x="210" y="526" width="178" height="38" rx="19" fill="#003d2b" fill-opacity="0.5" stroke="#80c0aa" stroke-width="1" stroke-opacity="0.25"/>
+  <text x="299" y="550" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="rgba(255,255,255,0.72)">✓ Sans inscription</text>
+
+  <rect x="400" y="526" width="256" height="38" rx="19" fill="#003d2b" fill-opacity="0.5" stroke="#80c0aa" stroke-width="1" stroke-opacity="0.25"/>
+  <text x="528" y="550" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="rgba(255,255,255,0.72)">✓ Formule bancaire officielle</text>
+
+  <!-- Domain -->
+  <text x="1120" y="550" text-anchor="end" font-family="system-ui,-apple-system,sans-serif" font-size="16" fill="rgba(255,255,255,0.3)">capacimetrimmo.fr</text>
+</svg>
