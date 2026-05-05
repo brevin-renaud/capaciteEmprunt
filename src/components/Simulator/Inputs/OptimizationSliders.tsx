@@ -1,75 +1,77 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { SLIDER_LIMITS } from "@/lib/constants";
-import type { SimulatorInputs } from "@/lib/calculator";
+import { OPTIMIZATION_SLIDER_LIMITS } from "@/lib/constants";
+import type { OptimizationInputs } from "@/lib/calculator";
 
-interface InteractiveSlidersProps {
-  inputs: SimulatorInputs;
-  onInputChange: (patch: Partial<SimulatorInputs>) => void;
+interface OptimizationSlidersProps {
+  inputs: OptimizationInputs;
+  onInputChange: (patch: Partial<OptimizationInputs>) => void;
   className?: string;
 }
 
 interface SliderConfig {
   label: string;
   field: keyof Pick<
-    SimulatorInputs,
-    | "salary"
+    OptimizationInputs,
+    | "loanAmount"
     | "apport"
     | "durationYears"
     | "annualInterestRate"
     | "annualInsuranceRate"
-    | "targetDebtRatio"
+    | "salary"
   >;
   min: number;
   max: number;
   step: number;
   format: (v: number) => string;
   hint: string;
+  optional?: boolean;
 }
 
 const SLIDERS: SliderConfig[] = [
   {
-    label: "Salaire net mensuel",
-    field: "salary",
-    ...SLIDER_LIMITS.salary,
+    label: "Capital emprunté",
+    field: "loanAmount",
+    ...OPTIMIZATION_SLIDER_LIMITS.loanAmount,
     format: (v) => v.toLocaleString("fr-FR") + " €",
-    hint: "Votre revenu net mensuel",
-  },
-  {
-    label: "Taux d'endettement",
-    field: "targetDebtRatio",
-    ...SLIDER_LIMITS.debtRatio,
-    format: (v) => `${v} %`,
-    hint: "Part du salaire dédiée à la mensualité - limite HCSF : 35 %",
-  },
-  {
-    label: "Apport personnel",
-    field: "apport",
-    ...SLIDER_LIMITS.apport,
-    format: (v) => v.toLocaleString("fr-FR") + " €",
-    hint: "Montant incluant les frais de notaire",
+    hint: "Montant du prêt que vous souhaitez contracter",
   },
   {
     label: "Durée du prêt",
     field: "durationYears",
-    ...SLIDER_LIMITS.duration,
+    ...OPTIMIZATION_SLIDER_LIMITS.duration,
     format: (v) => `${v} ans`,
     hint: "Durée de remboursement",
   },
   {
     label: "Taux d'intérêt nominal",
     field: "annualInterestRate",
-    ...SLIDER_LIMITS.interestRate,
+    ...OPTIMIZATION_SLIDER_LIMITS.interestRate,
     format: (v) => v.toFixed(2) + " %",
     hint: "Taux hors assurance",
   },
   {
     label: "Taux d'assurance",
     field: "annualInsuranceRate",
-    ...SLIDER_LIMITS.insuranceRate,
+    ...OPTIMIZATION_SLIDER_LIMITS.insuranceRate,
     format: (v) => v.toFixed(2) + " %",
     hint: "Taux annuel sur capital emprunté",
+  },
+  {
+    label: "Apport personnel",
+    field: "apport",
+    ...OPTIMIZATION_SLIDER_LIMITS.apport,
+    format: (v) => v.toLocaleString("fr-FR") + " €",
+    hint: "Montant incluant les frais de notaire",
+  },
+  {
+    label: "Salaire net mensuel",
+    field: "salary",
+    ...OPTIMIZATION_SLIDER_LIMITS.salary,
+    format: (v) => v.toLocaleString("fr-FR") + " €",
+    hint: "Optionnel — pour vérifier votre taux d'endettement HCSF",
+    optional: true,
   },
 ];
 
@@ -92,7 +94,6 @@ function EditableValue({
   const [raw, setRaw] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Focus without scrolling - prevents page jump when switching button → input
   useEffect(() => {
     if (editing) {
       inputRef.current?.focus({ preventScroll: true });
@@ -109,7 +110,6 @@ function EditableValue({
     setEditing(false);
   };
 
-  // Shared dimensions so button ↔ input swap causes zero layout shift
   const sharedStyle: React.CSSProperties = {
     color: "var(--t-brand)",
     background: "var(--bg-brand-dim)",
@@ -151,34 +151,48 @@ function EditableValue({
   );
 }
 
-export default function InteractiveSliders({
+export default function OptimizationSliders({
   inputs,
   onInputChange,
   className = "",
-}: InteractiveSlidersProps) {
+}: OptimizationSlidersProps) {
   return (
     <div className={`glass rounded-2xl p-6 flex flex-col gap-4 ${className}`}>
       <h2
         className="text-base font-semibold tracking-tight"
         style={{ color: "var(--t-secondary)" }}
       >
-        Vos paramètres
+        Paramètres du prêt
       </h2>
 
-      {SLIDERS.map(({ label, field, min, max, step, format, hint }) => {
+      {SLIDERS.map(({ label, field, min, max, step, format, hint, optional }) => {
         const value = inputs[field] as number;
         const pct = ((value - min) / (max - min)) * 100;
 
         return (
           <div key={field} className="flex flex-col gap-2">
             <div className="flex justify-between items-center gap-2">
-              <label
-                htmlFor={`slider-${field}`}
-                className="text-sm font-medium"
-                style={{ color: "var(--t-secondary)" }}
-              >
-                {label}
-              </label>
+              <div className="flex items-center gap-1.5 min-w-0">
+                <label
+                  htmlFor={`opt-slider-${field}`}
+                  className="text-sm font-medium"
+                  style={{ color: "var(--t-secondary)" }}
+                >
+                  {label}
+                </label>
+                {optional && (
+                  <span
+                    className="text-xs px-1.5 py-0.5 rounded-full shrink-0"
+                    style={{
+                      background: "var(--bg-brand-dim)",
+                      color: "var(--t-muted)",
+                      border: "1px solid var(--bd-brand-dim)",
+                    }}
+                  >
+                    optionnel
+                  </span>
+                )}
+              </div>
               <EditableValue
                 value={value}
                 format={format}
@@ -190,12 +204,10 @@ export default function InteractiveSliders({
             </div>
 
             <div className="relative h-2 flex items-center">
-              {/* Empty track */}
               <div
                 className="absolute left-0 top-0 w-full h-full rounded-full pointer-events-none"
                 style={{ background: "var(--slider-track)" }}
               />
-              {/* Filled track */}
               <div
                 className="absolute left-0 top-0 h-full rounded-full pointer-events-none"
                 style={{
@@ -204,7 +216,7 @@ export default function InteractiveSliders({
                 }}
               />
               <input
-                id={`slider-${field}`}
+                id={`opt-slider-${field}`}
                 type="range"
                 min={min}
                 max={max}
@@ -216,7 +228,6 @@ export default function InteractiveSliders({
                 className="absolute inset-0 w-full opacity-0 cursor-pointer"
                 style={{ height: "2rem", top: "50%", transform: "translateY(-50%)", touchAction: "none" }}
               />
-              {/* Thumb visual */}
               <div
                 className="absolute w-5 h-5 rounded-full pointer-events-none"
                 style={{
@@ -225,7 +236,6 @@ export default function InteractiveSliders({
                   border: "2px solid #80c0aa",
                   boxShadow: "0 4px 12px rgba(0,61,43,0.5)",
                   zIndex: 10,
-                  transition: "left 0s",
                 }}
               />
             </div>

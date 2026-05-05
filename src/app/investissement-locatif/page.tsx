@@ -1,16 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Home, Building2, X, Check, TriangleAlert } from "lucide-react";
+import ArticleSchema from "@/components/SEO/ArticleSchema";
+import BreadcrumbSchema from "@/components/SEO/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Investissement Locatif 2026 - Capacité d'Emprunt et Calcul Différentiel",
   description:
     "Calculez votre capacité d'emprunt pour un investissement locatif en 2026 : méthode différentielle, revenus locatifs, cashflow, levier immobilier et fiscalité.",
+  keywords: [
+    "investissement locatif capacité d'emprunt",
+    "calcul différentiel investissement locatif",
+    "revenus locatifs crédit immobilier",
+    "cashflow immobilier",
+    "levier immobilier",
+    "fiscalité investissement locatif",
+    "rendement locatif 2026",
+  ],
   openGraph: {
     title: "Investissement Locatif 2026 - Capacité d'Emprunt et Calcul Différentiel",
     description: "Méthode différentielle, revenus locatifs, cashflow, fiscalité - tout pour réussir votre investissement immobilier.",
     url: "https://www.capacimetrimmo.fr/investissement-locatif",
-    type: "website",
+    type: "article",
     locale: "fr_FR",
   },
   alternates: { canonical: "https://www.capacimetrimmo.fr/investissement-locatif" },
@@ -19,6 +30,19 @@ export const metadata: Metadata = {
 export default function InvestissementLocatif() {
   return (
     <main className="min-h-screen py-16 px-4">
+      <ArticleSchema
+        headline="Investissement Locatif 2026 - Capacité d'Emprunt et Calcul Différentiel"
+        description="Calculez votre capacité d'emprunt pour un investissement locatif en 2026 : méthode différentielle, revenus locatifs, cashflow, levier immobilier et fiscalité."
+        url="https://www.capacimetrimmo.fr/investissement-locatif"
+        datePublished="2025-01-15"
+        dateModified="2026-05-05"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Accueil", url: "https://www.capacimetrimmo.fr" },
+          { name: "Investissement locatif", url: "https://www.capacimetrimmo.fr/investissement-locatif" },
+        ]}
+      />
       <div className="max-w-4xl mx-auto">
 
         {/* Hero */}

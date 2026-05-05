@@ -2,11 +2,12 @@
 
 import { animate, useMotionValue, useTransform, motion } from "framer-motion";
 import { useEffect, type ReactNode } from "react";
-import type { SimulatorResults } from "@/lib/calculator";
-import { Home, TrendingUp, Wallet, TriangleAlert } from "lucide-react";
+import type { OptimizationResults } from "@/lib/calculator";
+import { TrendingDown, TrendingUp, Wallet, Home, TriangleAlert } from "lucide-react";
 
-interface DashboardProps {
-  results: SimulatorResults;
+interface OptimizationDashboardProps {
+  results: OptimizationResults;
+  loanAmount: number;
 }
 
 interface KPICardProps {
@@ -74,16 +75,15 @@ const euroFmt = (v: number) =>
     maximumFractionDigits: 0,
   });
 
-export default function Dashboard({ results }: DashboardProps) {
+export default function OptimizationDashboard({ results, loanAmount }: OptimizationDashboardProps) {
   const {
-    totalBudget,
-    loanCapacity,
     monthlyPayment,
+    totalBudget,
+    totalCreditCost,
     totalInterest,
     totalInsurance,
     netContribution,
     exceedsHCSF,
-    debtRatio,
   } = results;
 
   return (
@@ -92,27 +92,27 @@ export default function Dashboard({ results }: DashboardProps) {
         className="text-base font-semibold tracking-tight"
         style={{ color: "var(--t-secondary)" }}
       >
-        Votre capacité d&apos;acquisition
+        Résultats de votre prêt
       </h2>
 
       <div className="grid grid-cols-2 gap-3">
         {/* Row 1: PRIMARY — full width, highlighted */}
         <KPICard
+          label="Mensualité"
+          value={monthlyPayment}
+          format={euroFmt}
+          icon={<TrendingDown size={15} />}
+          highlight
+          fullWidth
+          warning={exceedsHCSF}
+        />
+
+        {/* Row 2: common cards — same positions as Dashboard row 2 */}
+        <KPICard
           label="Budget total d'acquisition"
           value={totalBudget}
           format={euroFmt}
           icon={<Home size={15} />}
-          highlight
-          fullWidth
-        />
-
-        {/* Row 2: common cards — same positions as OptimizationDashboard rows 2 */}
-        <KPICard
-          label={`Mensualité (${Math.round(debtRatio * 100)} % du salaire)`}
-          value={monthlyPayment}
-          format={euroFmt}
-          icon={<TrendingUp size={15} />}
-          warning={exceedsHCSF}
         />
         <KPICard
           label="Coût total des intérêts"
@@ -121,7 +121,7 @@ export default function Dashboard({ results }: DashboardProps) {
           icon={<TrendingUp size={15} />}
         />
 
-        {/* Row 3: common cards */}
+        {/* Row 3: common cards — same positions as Dashboard row 3 */}
         <KPICard
           label="Coût total assurance"
           value={totalInsurance}
@@ -137,10 +137,10 @@ export default function Dashboard({ results }: DashboardProps) {
 
         {/* Row 4: MODE-SPECIFIC — full width, at bottom */}
         <KPICard
-          label="Capacité d'emprunt"
-          value={loanCapacity}
+          label="Coût total du crédit (intérêts + assurance)"
+          value={totalCreditCost}
           format={euroFmt}
-          icon={<Wallet size={15} />}
+          icon={<TrendingUp size={15} />}
           fullWidth
           dimmed
         />
@@ -157,11 +157,21 @@ export default function Dashboard({ results }: DashboardProps) {
         >
           <TriangleAlert size={14} className="mt-0.5 shrink-0" />
           <span>
-            Votre taux d&apos;endettement dépasse la limite HCSF de 35 %. Certaines banques
-            peuvent refuser votre dossier.
+            La mensualité dépasse 35 % de votre salaire (limite HCSF). Certaines banques
+            peuvent refuser ce dossier.
           </span>
         </div>
       )}
+
+      <div
+        className="rounded-xl px-4 py-3 text-xs flex items-baseline justify-between gap-2"
+        style={{ background: "var(--bg-brand-dim)", border: "1px solid var(--bd-brand)" }}
+      >
+        <span style={{ color: "var(--t-muted)" }}>Capital emprunté</span>
+        <span className="font-semibold tabular-nums" style={{ color: "var(--t-brand)" }}>
+          {euroFmt(loanAmount)}
+        </span>
+      </div>
     </div>
   );
 }

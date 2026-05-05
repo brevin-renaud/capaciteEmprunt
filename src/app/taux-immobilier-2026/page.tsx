@@ -1,16 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, TriangleAlert } from "lucide-react";
+import ArticleSchema from "@/components/SEO/ArticleSchema";
+import BreadcrumbSchema from "@/components/SEO/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Taux Immobilier 2026 - Baromètre des Taux de Crédit par Durée et Profil",
   description:
     "Consultez les taux de crédit immobilier en mai 2026 selon la durée (15, 20, 25 ans) et le profil emprunteur. Conseils pour négocier le meilleur taux avec votre banque ou un courtier.",
+  keywords: [
+    "taux immobilier 2026",
+    "taux crédit immobilier mai 2026",
+    "baromètre taux immobilier",
+    "taux prêt immobilier 20 ans",
+    "meilleur taux immobilier",
+    "négocier taux crédit immobilier",
+    "taux fixe variable immobilier",
+  ],
   openGraph: {
     title: "Taux Immobilier 2026 - Baromètre des Taux de Crédit",
     description: "Taux actuels par durée et profil emprunteur + conseils pour obtenir le meilleur taux en 2026.",
     url: "https://www.capacimetrimmo.fr/taux-immobilier-2026",
-    type: "website",
+    type: "article",
     locale: "fr_FR",
   },
   alternates: { canonical: "https://www.capacimetrimmo.fr/taux-immobilier-2026" },
@@ -52,6 +63,19 @@ const EVOLUTION = [
 export default function TauxImmobilier2026() {
   return (
     <main className="min-h-screen py-16 px-4">
+      <ArticleSchema
+        headline="Taux Immobilier 2026 - Baromètre des Taux de Crédit par Durée et Profil"
+        description="Consultez les taux de crédit immobilier en mai 2026 selon la durée (15, 20, 25 ans) et le profil emprunteur. Conseils pour négocier le meilleur taux."
+        url="https://www.capacimetrimmo.fr/taux-immobilier-2026"
+        datePublished="2025-01-15"
+        dateModified="2026-05-05"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Accueil", url: "https://www.capacimetrimmo.fr" },
+          { name: "Taux immobilier 2026", url: "https://www.capacimetrimmo.fr/taux-immobilier-2026" },
+        ]}
+      />
       <div className="max-w-4xl mx-auto">
 
         {/* Hero */}
@@ -112,33 +136,39 @@ export default function TauxImmobilier2026() {
               style={{ border: "1px solid var(--bd-card)" }}
             >
               <table className="w-full text-sm">
+                <caption className="sr-only">Taux de crédit immobilier par durée et profil emprunteur - mai 2026</caption>
                 <thead>
                   <tr style={{ background: "var(--bg-brand-medium)" }}>
                     <th
+                      scope="col"
                       className="text-left px-5 py-3 font-semibold"
                       style={{ color: "var(--t-brand)" }}
                     >
                       Durée
                     </th>
                     <th
+                      scope="col"
                       className="text-right px-4 py-3 font-semibold"
                       style={{ color: "var(--t-brand)" }}
                     >
                       Excellent profil
                     </th>
                     <th
+                      scope="col"
                       className="text-right px-4 py-3 font-semibold"
                       style={{ color: "var(--t-brand)" }}
                     >
                       Bon profil
                     </th>
                     <th
+                      scope="col"
                       className="text-right px-4 py-3 font-semibold"
                       style={{ color: "var(--t-brand)" }}
                     >
                       Profil standard
                     </th>
                     <th
+                      scope="col"
                       className="text-center px-4 py-3 font-semibold"
                       style={{ color: "var(--t-brand)" }}
                     >

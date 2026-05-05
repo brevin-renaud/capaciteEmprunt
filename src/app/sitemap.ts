@@ -34,49 +34,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE_URL}/taux-immobilier-2026`,
       lastModified: now,
       changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/primo-accedant`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${BASE_URL}/pret-a-taux-zero-2026`,
+      lastModified: now,
+      changeFrequency: "monthly",
       priority: 0.75,
     },
     {
       url: `${BASE_URL}/frais-de-notaire`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/primo-accedant`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/pret-a-taux-zero-2026`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.75,
     },
     {
       url: `${BASE_URL}/investissement-locatif`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/a-propos`,
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.4,
-    },
-    {
-      url: `${BASE_URL}/mentions-legales`,
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${BASE_URL}/confidentialite`,
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.3,
     },
   ];
 }

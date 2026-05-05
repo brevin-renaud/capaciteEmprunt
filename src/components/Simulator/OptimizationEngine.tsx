@@ -2,23 +2,23 @@
 
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { Check, Link } from "lucide-react";
-import { simulate, simulateMultipleDurations } from "@/lib/calculator";
-import type { SimulatorInputs } from "@/lib/calculator";
-import { buildShareURL } from "@/lib/url-serializer";
+import { optimizeLoan, optimizeLoanMultipleDurations } from "@/lib/calculator";
+import type { OptimizationInputs } from "@/lib/calculator";
+import { buildOptimizationShareURL } from "@/lib/url-serializer";
 import { COMPARISON_DURATIONS } from "@/lib/constants";
 
-import InteractiveSliders from "./Inputs/InteractiveSliders";
+import OptimizationSliders from "./Inputs/OptimizationSliders";
 import ProjectToggle from "./Inputs/ProjectToggle";
-import Dashboard from "./Results/Dashboard";
+import OptimizationDashboard from "./Results/OptimizationDashboard";
 import HCSFGauge from "./Results/HCSFGauge";
-import MultiDurationTable from "./Results/MultiDurationTable";
+import OptimizationMultiDurationTable from "./Results/OptimizationMultiDurationTable";
 
-interface EngineProps {
-  inputs: SimulatorInputs;
-  onInputChange: (patch: Partial<SimulatorInputs>) => void;
+interface OptimizationEngineProps {
+  inputs: OptimizationInputs;
+  onInputChange: (patch: Partial<OptimizationInputs>) => void;
 }
 
-export default function Engine({ inputs, onInputChange }: EngineProps) {
+export default function OptimizationEngine({ inputs, onInputChange }: OptimizationEngineProps) {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function Engine({ inputs, onInputChange }: EngineProps) {
   }, [inputs]);
 
   const handleShare = () => {
-    const url = buildShareURL(inputs);
+    const url = buildOptimizationShareURL(inputs);
     navigator.clipboard.writeText(url).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -36,9 +36,9 @@ export default function Engine({ inputs, onInputChange }: EngineProps) {
   };
 
   const deferredInputs = useDeferredValue(inputs);
-  const results = useMemo(() => simulate(deferredInputs), [deferredInputs]);
+  const results = useMemo(() => optimizeLoan(deferredInputs), [deferredInputs]);
   const multiScenarios = useMemo(
-    () => simulateMultipleDurations(deferredInputs, COMPARISON_DURATIONS),
+    () => optimizeLoanMultipleDurations(deferredInputs, COMPARISON_DURATIONS),
     [deferredInputs]
   );
 
@@ -46,7 +46,7 @@ export default function Engine({ inputs, onInputChange }: EngineProps) {
     <div className="flex flex-col gap-5 w-full max-w-6xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full max-w-6xl mx-auto px-4 items-start">
         <div className="flex flex-col gap-4 lg:sticky lg:top-16">
-          <InteractiveSliders inputs={inputs} onInputChange={onInputChange} />
+          <OptimizationSliders inputs={inputs} onInputChange={onInputChange} />
           <ProjectToggle
             value={inputs.propertyType}
             onChange={(propertyType) => onInputChange({ propertyType })}
@@ -54,14 +54,19 @@ export default function Engine({ inputs, onInputChange }: EngineProps) {
         </div>
 
         <div className="flex flex-col gap-4">
-          <Dashboard results={results} />
-          <HCSFGauge
-            debtRatio={results.debtRatio}
-            exceedsHCSF={results.exceedsHCSF}
-            monthlyPayment={results.monthlyPayment}
-            salary={inputs.salary}
+          <OptimizationDashboard results={results} loanAmount={inputs.loanAmount} />
+          {inputs.salary > 0 && (
+            <HCSFGauge
+              debtRatio={results.debtRatio}
+              exceedsHCSF={results.exceedsHCSF}
+              monthlyPayment={results.monthlyPayment}
+              salary={inputs.salary}
+            />
+          )}
+          <OptimizationMultiDurationTable
+            scenarios={multiScenarios}
+            currentDuration={inputs.durationYears}
           />
-          <MultiDurationTable scenarios={multiScenarios} targetDebtRatio={inputs.targetDebtRatio} />
         </div>
       </div>
 

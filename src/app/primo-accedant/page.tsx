@@ -1,15 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleSchema from "@/components/SEO/ArticleSchema";
+import BreadcrumbSchema from "@/components/SEO/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Primo-Accédant 2026 - Toutes les Aides pour Votre Premier Achat Immobilier",
   description:
     "Prêt à Taux Zéro, Action Logement, TVA réduite, exonération taxe foncière… Toutes les aides primo-accédants 2026 pour maximiser votre budget immobilier et concrétiser votre premier achat.",
+  keywords: [
+    "primo-accédant 2026",
+    "aides premier achat immobilier",
+    "prêt à taux zéro primo-accédant",
+    "action logement primo-accédant",
+    "TVA réduite logement neuf",
+    "avantages primo-accédant banque",
+    "dérogation HCSF primo-accédant",
+  ],
   openGraph: {
     title: "Primo-Accédant 2026 - Toutes les Aides pour Votre Premier Achat Immobilier",
     description: "PTZ, Action Logement, TVA réduite - toutes les aides disponibles pour les primo-accédants en 2026.",
     url: "https://www.capacimetrimmo.fr/primo-accedant",
-    type: "website",
+    type: "article",
     locale: "fr_FR",
   },
   alternates: { canonical: "https://www.capacimetrimmo.fr/primo-accedant" },
@@ -103,6 +114,19 @@ const CHECKLIST = [
 export default function PrimoAccedant() {
   return (
     <main className="min-h-screen py-16 px-4">
+      <ArticleSchema
+        headline="Primo-Accédant 2026 - Toutes les Aides pour Votre Premier Achat Immobilier"
+        description="Prêt à Taux Zéro, Action Logement, TVA réduite, exonération taxe foncière… Toutes les aides primo-accédants 2026 pour maximiser votre budget immobilier."
+        url="https://www.capacimetrimmo.fr/primo-accedant"
+        datePublished="2025-01-15"
+        dateModified="2026-05-05"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Accueil", url: "https://www.capacimetrimmo.fr" },
+          { name: "Guide primo-accédant", url: "https://www.capacimetrimmo.fr/primo-accedant" },
+        ]}
+      />
       <div className="max-w-4xl mx-auto">
 
         {/* Hero */}

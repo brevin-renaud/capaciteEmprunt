@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navigation/Navbar";
 import Footer from "@/components/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
+import OrganizationSchema from "@/components/SEO/OrganizationSchema";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -23,8 +24,21 @@ export const metadata: Metadata = {
   },
   description:
     "Calculez gratuitement votre capacité d'emprunt immobilier. Formule HCSF 35 %, frais de notaire, comparatif 15/20/25 ans. Résultat instantané, aucune inscription.",
-  authors: [{ name: "CapaciteEmprunt" }],
+  keywords: [
+    "capacité d'emprunt",
+    "simulateur capacité d'emprunt",
+    "calculer capacité d'emprunt",
+    "calcul prêt immobilier",
+    "règle HCSF",
+    "taux endettement 35%",
+    "simulation crédit immobilier",
+    "combien emprunter",
+    "frais de notaire",
+    "prêt immobilier 2026",
+  ],
+  authors: [{ name: "CapaciteEmprunt", url: "https://www.capacimetrimmo.fr" }],
   creator: "CapaciteEmprunt",
+  publisher: "CapaciteEmprunt",
   metadataBase: new URL("https://www.capacimetrimmo.fr"),
   manifest: "/manifest.webmanifest",
   appleWebApp: {
@@ -39,12 +53,21 @@ export const metadata: Metadata = {
     title: "Simulateur de capacité d'emprunt immobilier gratuit",
     description:
       "Calculez votre capacité d'emprunt immobilier selon la règle HCSF des 35 %. Simulation instantanée, partageable par lien.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "CapaciteEmprunt — Simulateur de capacité d'emprunt immobilier gratuit",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Simulateur de capacité d'emprunt immobilier gratuit",
     description:
       "Calculez votre capacité d'emprunt immobilier selon la règle HCSF des 35 %. Simulation instantanée, partageable par lien.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -57,6 +80,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  category: "finance",
 };
 
 /* Exécuté avant le premier paint pour éviter le flash de thème */
@@ -76,6 +100,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Aller au contenu principal
         </a>
+        <OrganizationSchema />
         <ThemeProvider>
           <Navbar />
           <div id="main-content" tabIndex={-1}>

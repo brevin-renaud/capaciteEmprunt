@@ -1,6 +1,6 @@
 import LZString from "lz-string";
-import { DEFAULTS, SCHEMA_VERSION, URL_KEYS } from "./constants";
-import type { PropertyType, SimulatorInputs } from "./calculator";
+import { DEFAULTS, OPTIMIZATION_DEFAULTS, OPTIMIZATION_URL_KEYS, SCHEMA_VERSION, URL_KEYS } from "./constants";
+import type { OptimizationInputs, PropertyType, SimulatorInputs } from "./calculator";
 
 type RawParams = Partial<Record<string, string>>;
 
@@ -75,6 +75,43 @@ export function pushToURL(_inputs: SimulatorInputs): void {
 export function buildShareURL(inputs: SimulatorInputs): string {
   if (typeof window === "undefined") return "";
   const params = serializeToParams(inputs);
+  params.set(OPTIMIZATION_URL_KEYS.mode, "0");
+  return `${window.location.origin}/simulateur?${params.toString()}`;
+}
+
+export function serializeOptimizationToParams(inputs: OptimizationInputs): URLSearchParams {
+  const params = new URLSearchParams();
+  params.set(URL_KEYS.version,                  SCHEMA_VERSION.toString());
+  params.set(OPTIMIZATION_URL_KEYS.loanAmount,  encodeInt(inputs.loanAmount));
+  params.set(OPTIMIZATION_URL_KEYS.salary,      encodeInt(inputs.salary));
+  params.set(URL_KEYS.apport,                   encodeInt(inputs.apport));
+  params.set(URL_KEYS.duration,                 encodeInt(inputs.durationYears));
+  params.set(URL_KEYS.interestRate,             encodeFloat(inputs.annualInterestRate));
+  params.set(URL_KEYS.insuranceRate,            encodeFloat(inputs.annualInsuranceRate, 1000));
+  params.set(URL_KEYS.propertyType,             inputs.propertyType);
+  return params;
+}
+
+export function deserializeOptimizationFromParams(raw: RawParams): OptimizationInputs {
+  const typ = raw[URL_KEYS.propertyType];
+  const propertyType: PropertyType =
+    typ === "new" || typ === "old" ? typ : OPTIMIZATION_DEFAULTS.propertyType;
+
+  return {
+    loanAmount:         decodeInt(raw[OPTIMIZATION_URL_KEYS.loanAmount], OPTIMIZATION_DEFAULTS.loanAmount),
+    salary:             decodeInt(raw[OPTIMIZATION_URL_KEYS.salary],     OPTIMIZATION_DEFAULTS.salary),
+    apport:             decodeInt(raw[URL_KEYS.apport],                  OPTIMIZATION_DEFAULTS.apport),
+    durationYears:      decodeInt(raw[URL_KEYS.duration],                OPTIMIZATION_DEFAULTS.duration),
+    annualInterestRate: decodeFloat(raw[URL_KEYS.interestRate],          OPTIMIZATION_DEFAULTS.interestRate),
+    annualInsuranceRate:decodeFloat(raw[URL_KEYS.insuranceRate],         OPTIMIZATION_DEFAULTS.insuranceRate, 1000),
+    propertyType,
+  };
+}
+
+export function buildOptimizationShareURL(inputs: OptimizationInputs): string {
+  if (typeof window === "undefined") return "";
+  const params = serializeOptimizationToParams(inputs);
+  params.set(OPTIMIZATION_URL_KEYS.mode, "1");
   return `${window.location.origin}/simulateur?${params.toString()}`;
 }
 
