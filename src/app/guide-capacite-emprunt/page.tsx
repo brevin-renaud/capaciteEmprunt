@@ -198,14 +198,14 @@ export default function GuideCapaciteEmprunt() {
             </p>
 
             <div
-              className="rounded-2xl p-6 mb-6 font-mono text-center"
+              className="rounded-2xl p-6 mb-6 font-mono text-center overflow-x-auto"
               style={{
                 background: "var(--bg-brand-medium)",
                 border: "1px solid var(--bd-brand)",
               }}
             >
               <p
-                className="text-lg font-bold"
+                className="text-lg font-bold whitespace-nowrap"
                 style={{ color: "var(--t-brand)" }}
               >
                 P = M × [1 − (1+r)^(−n)] / r

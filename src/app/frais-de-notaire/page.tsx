@@ -256,11 +256,12 @@ export default function FraisDeNotaire() {
               Exemples de frais de notaire selon le prix du bien
             </h2>
 
+            <div className="overflow-x-auto">
             <div
               className="rounded-2xl overflow-hidden"
               style={{ border: "1px solid var(--bd-card)" }}
             >
-              <table className="w-full text-sm">
+              <table className="w-full text-sm min-w-105">
                 <caption className="sr-only">Exemples de frais de notaire selon le prix du bien - logement neuf et ancien 2026</caption>
                 <thead>
                   <tr style={{ background: "var(--bg-brand-medium)" }}>
@@ -344,6 +345,7 @@ export default function FraisDeNotaire() {
                   ))}
                 </tbody>
               </table>
+            </div>
             </div>
           </section>
 

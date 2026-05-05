@@ -131,11 +131,12 @@ export default function TauxImmobilier2026() {
               principale avec apport ≥ 10 %.
             </p>
 
+            <div className="overflow-x-auto">
             <div
               className="rounded-2xl overflow-hidden"
               style={{ border: "1px solid var(--bd-card)" }}
             >
-              <table className="w-full text-sm">
+              <table className="w-full text-sm min-w-120">
                 <caption className="sr-only">Taux de crédit immobilier par durée et profil emprunteur - mai 2026</caption>
                 <thead>
                   <tr style={{ background: "var(--bg-brand-medium)" }}>
@@ -219,6 +220,7 @@ export default function TauxImmobilier2026() {
                   ))}
                 </tbody>
               </table>
+            </div>
             </div>
 
             <p className="text-xs mt-3" style={{ color: "var(--t-faint)" }}>

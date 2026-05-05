@@ -272,11 +272,12 @@ export default function PTZ2026() {
               du foyer et la zone.
             </p>
 
+            <div className="overflow-x-auto">
             <div
               className="rounded-2xl overflow-hidden"
               style={{ border: "1px solid var(--bd-card)" }}
             >
-              <table className="w-full text-sm">
+              <table className="w-full text-sm min-w-120">
                 <caption className="sr-only">Plafonds de ressources PTZ 2026 selon la composition du foyer et la zone géographique</caption>
                 <thead>
                   <tr style={{ background: "var(--bg-brand-medium)" }}>
@@ -322,6 +323,7 @@ export default function PTZ2026() {
                   ))}
                 </tbody>
               </table>
+            </div>
             </div>
           </section>
 

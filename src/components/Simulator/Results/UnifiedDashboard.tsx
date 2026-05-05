@@ -47,7 +47,7 @@ function KPICard({
     <div
       className={[
         "rounded-xl p-4 flex flex-col gap-2",
-        fullWidth ? "col-span-2" : "",
+        fullWidth ? "sm:col-span-2" : "",
         highlight ? "glass-strong" : "glass",
       ].join(" ")}
       style={{
@@ -105,7 +105,7 @@ export default function UnifiedDashboard({
         {mode === "capacity" ? "Votre capacité d’acquisition" : "Résultats de votre prêt"}
       </h2>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {/* ── Row 1: two primary KPIs side by side, highlight follows mode ── */}
         <KPICard
           label="Budget total d'acquisition"
@@ -141,7 +141,7 @@ export default function UnifiedDashboard({
 
         {/* ── Bottom: mode-specific card — stays mounted, label + value update ── */}
         <div
-          className="col-span-2 rounded-xl p-4 flex flex-col gap-2 glass"
+          className="sm:col-span-2 rounded-xl p-4 flex flex-col gap-2 glass"
           style={{ opacity: 0.78 }}
         >
           <div className="flex items-center justify-between">

@@ -183,11 +183,12 @@ export default function InvestissementLocatif() {
             >
               Exemple pratique
             </h3>
+            <div className="overflow-x-auto">
             <div
               className="rounded-2xl overflow-hidden"
               style={{ border: "1px solid var(--bd-card)" }}
             >
-              <table className="w-full text-sm">
+              <table className="w-full text-sm min-w-105">
                 <thead>
                   <tr style={{ background: "var(--bg-brand-medium)" }}>
                     <th
@@ -256,6 +257,7 @@ export default function InvestissementLocatif() {
                   ))}
                 </tbody>
               </table>
+            </div>
             </div>
           </section>
 
