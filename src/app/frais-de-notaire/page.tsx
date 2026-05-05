@@ -1,15 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleSchema from "@/components/SEO/ArticleSchema";
+import BreadcrumbSchema from "@/components/SEO/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Frais de Notaire 2026 - Calcul Complet Neuf et Ancien",
   description:
     "Tout sur les frais de notaire 2026 : droits de mutation, émoluments, débours. Neuf (2,5 %) vs ancien (7,5 %) : impact sur votre apport et votre capacité d'emprunt.",
+  keywords: [
+    "frais de notaire 2026",
+    "calcul frais notaire",
+    "frais notaire achat immobilier",
+    "droits de mutation",
+    "frais notaire neuf vs ancien",
+    "émoluments notaire",
+    "combien coûtent les frais de notaire",
+  ],
   openGraph: {
     title: "Frais de Notaire 2026 - Calcul Complet Neuf et Ancien",
     description: "Droits de mutation, émoluments, débours : calculez et anticipez vos frais de notaire selon le type de bien.",
     url: "https://www.capacimetrimmo.fr/frais-de-notaire",
-    type: "website",
+    type: "article",
     locale: "fr_FR",
   },
   alternates: { canonical: "https://www.capacimetrimmo.fr/frais-de-notaire" },
@@ -53,6 +64,19 @@ const EXEMPLES = [
 export default function FraisDeNotaire() {
   return (
     <main className="min-h-screen py-16 px-4">
+      <ArticleSchema
+        headline="Frais de Notaire 2026 - Calcul Complet Neuf et Ancien"
+        description="Tout sur les frais de notaire 2026 : droits de mutation, émoluments, débours. Neuf (2,5 %) vs ancien (7,5 %) : impact sur votre apport et votre capacité d'emprunt."
+        url="https://www.capacimetrimmo.fr/frais-de-notaire"
+        datePublished="2025-01-15"
+        dateModified="2026-05-05"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Accueil", url: "https://www.capacimetrimmo.fr" },
+          { name: "Frais de notaire", url: "https://www.capacimetrimmo.fr/frais-de-notaire" },
+        ]}
+      />
       <div className="max-w-4xl mx-auto">
 
         {/* Hero */}
@@ -237,37 +261,43 @@ export default function FraisDeNotaire() {
               style={{ border: "1px solid var(--bd-card)" }}
             >
               <table className="w-full text-sm">
+                <caption className="sr-only">Exemples de frais de notaire selon le prix du bien - logement neuf et ancien 2026</caption>
                 <thead>
                   <tr style={{ background: "var(--bg-brand-medium)" }}>
                     <th
+                      scope="col"
                       className="text-left px-5 py-3 font-semibold"
                       style={{ color: "var(--t-brand)" }}
                     >
                       Prix d&apos;achat
                     </th>
                     <th
+                      scope="col"
                       className="text-right px-4 py-3 font-semibold"
                       style={{ color: "var(--t-brand)" }}
                     >
                       Frais ancien
                     </th>
                     <th
+                      scope="col"
                       className="text-right px-4 py-3 font-semibold"
                       style={{ color: "var(--t-muted)" }}
                     >
-                      Taux
+                      Taux ancien
                     </th>
                     <th
+                      scope="col"
                       className="text-right px-4 py-3 font-semibold"
                       style={{ color: "var(--t-brand)" }}
                     >
                       Frais neuf
                     </th>
                     <th
+                      scope="col"
                       className="text-right px-4 py-3 font-semibold"
                       style={{ color: "var(--t-muted)" }}
                     >
-                      Taux
+                      Taux neuf
                     </th>
                   </tr>
                 </thead>

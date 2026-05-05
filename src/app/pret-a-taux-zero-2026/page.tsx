@@ -1,17 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check } from "lucide-react";
+import ArticleSchema from "@/components/SEO/ArticleSchema";
+import BreadcrumbSchema from "@/components/SEO/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité",
   description:
     "Tout savoir sur le Prêt à Taux Zéro 2026 : zones géographiques A, A bis, B1, B2, C, plafonds de ressources, quotité maximale et cumul avec un crédit immobilier classique.",
+  keywords: [
+    "prêt à taux zéro 2026",
+    "PTZ conditions 2026",
+    "éligibilité PTZ",
+    "zones PTZ A B C",
+    "plafonds ressources PTZ",
+    "quotité PTZ",
+    "prêt immobilier sans intérêts primo-accédant",
+  ],
   openGraph: {
     title: "Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité",
     description:
       "Zones A/B/C, plafonds de ressources et quotités - tout comprendre sur le Prêt à Taux Zéro pour les primo-accédants en 2026.",
     url: "https://www.capacimetrimmo.fr/pret-a-taux-zero-2026",
-    type: "website",
+    type: "article",
     locale: "fr_FR",
   },
   alternates: { canonical: "https://www.capacimetrimmo.fr/pret-a-taux-zero-2026" },
@@ -56,30 +67,23 @@ const PLAFONDS_RESSOURCES = [
   { pers: "5 personnes", A_Abis: "85 100 €", B1: "69 000 €", B2_C: "62 100 €" },
 ];
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.capacimetrimmo.fr" },
-    { "@type": "ListItem", position: 2, name: "Prêt à Taux Zéro 2026", item: "https://www.capacimetrimmo.fr/pret-a-taux-zero-2026" },
-  ],
-};
-
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité",
-  description: "Guide complet sur le Prêt à Taux Zéro (PTZ) 2026 : conditions, zones géographiques, plafonds de ressources et intégration dans un plan de financement immobilier.",
-  url: "https://www.capacimetrimmo.fr/pret-a-taux-zero-2026",
-  author: { "@type": "Organization", name: "CapaciteEmprunt" },
-  publisher: { "@type": "Organization", name: "CapaciteEmprunt" },
-};
 
 export default function PTZ2026() {
   return (
     <main className="min-h-screen py-16 px-4">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <ArticleSchema
+        headline="Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité"
+        description="Guide complet sur le Prêt à Taux Zéro (PTZ) 2026 : conditions, zones géographiques, plafonds de ressources et intégration dans un plan de financement immobilier."
+        url="https://www.capacimetrimmo.fr/pret-a-taux-zero-2026"
+        datePublished="2025-01-15"
+        dateModified="2026-05-05"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Accueil", url: "https://www.capacimetrimmo.fr" },
+          { name: "Prêt à Taux Zéro 2026", url: "https://www.capacimetrimmo.fr/pret-a-taux-zero-2026" },
+        ]}
+      />
 
       <div className="max-w-4xl mx-auto">
 
@@ -273,18 +277,19 @@ export default function PTZ2026() {
               style={{ border: "1px solid var(--bd-card)" }}
             >
               <table className="w-full text-sm">
+                <caption className="sr-only">Plafonds de ressources PTZ 2026 selon la composition du foyer et la zone géographique</caption>
                 <thead>
                   <tr style={{ background: "var(--bg-brand-medium)" }}>
-                    <th className="text-left px-5 py-3 font-semibold" style={{ color: "var(--t-brand)" }}>
+                    <th scope="col" className="text-left px-5 py-3 font-semibold" style={{ color: "var(--t-brand)" }}>
                       Foyer
                     </th>
-                    <th className="text-right px-4 py-3 font-semibold" style={{ color: "var(--t-brand)" }}>
+                    <th scope="col" className="text-right px-4 py-3 font-semibold" style={{ color: "var(--t-brand)" }}>
                       Zone A/A bis
                     </th>
-                    <th className="text-right px-4 py-3 font-semibold" style={{ color: "var(--t-brand)" }}>
+                    <th scope="col" className="text-right px-4 py-3 font-semibold" style={{ color: "var(--t-brand)" }}>
                       Zone B1
                     </th>
-                    <th className="text-right px-4 py-3 font-semibold" style={{ color: "var(--t-brand)" }}>
+                    <th scope="col" className="text-right px-4 py-3 font-semibold" style={{ color: "var(--t-brand)" }}>
                       Zone B2/C
                     </th>
                   </tr>

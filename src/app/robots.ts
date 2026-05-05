@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/mentions-legales", "/confidentialite", "/a-propos"],
       },
     ],
     sitemap: "https://www.capacimetrimmo.fr/sitemap.xml",

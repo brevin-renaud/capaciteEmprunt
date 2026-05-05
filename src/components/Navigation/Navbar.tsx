@@ -29,6 +29,7 @@ export default function Navbar() {
 
   return (
     <nav
+      aria-label="Navigation principale"
       className="sticky top-0 z-50"
       style={{
         backdropFilter: "blur(16px)",
@@ -42,10 +43,12 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
+          aria-label="CapaciteEmprunt — Accueil"
           className="flex items-center gap-2 font-bold text-sm tracking-tight shrink-0"
           style={{ color: "var(--t-primary)" }}
         >
           <span
+            aria-hidden="true"
             className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black"
             style={{ background: "#003d2b", color: "#ffffff" }}
           >
@@ -55,13 +58,14 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-0.5">
+        <ul className="hidden md:flex items-center gap-0.5" role="list">
           {NAV_PRIMARY.map(({ href, label }) => {
             const active = pathname === href;
             return (
               <li key={href}>
                 <Link
                   href={href}
+                  aria-current={active ? "page" : undefined}
                   className="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
                   style={{
                     color: active ? "var(--t-brand)" : "var(--t-secondary)",
@@ -137,6 +141,7 @@ export default function Navbar() {
                     key={href}
                     href={href}
                     role="menuitem"
+                    aria-current={pathname === href ? "page" : undefined}
                     onClick={() => setResourcesOpen(false)}
                     className="px-4 py-2 text-sm transition-colors"
                     style={{
@@ -171,7 +176,9 @@ export default function Navbar() {
             className="p-2 rounded-lg"
             style={{ color: "var(--t-secondary)" }}
             onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? "Fermer le menu de navigation" : "Ouvrir le menu de navigation"}
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
               {menuOpen ? (
@@ -195,6 +202,9 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div
+          id="mobile-menu"
+          role="navigation"
+          aria-label="Menu mobile"
           className="md:hidden border-t px-4 py-3 flex flex-col gap-0.5"
           style={{ borderColor: "var(--bd-brand-nav)" }}
         >
@@ -204,6 +214,7 @@ export default function Navbar() {
               <Link
                 key={href}
                 href={href}
+                aria-current={active ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
                 className="px-3 py-2 rounded-lg text-sm font-medium"
                 style={{

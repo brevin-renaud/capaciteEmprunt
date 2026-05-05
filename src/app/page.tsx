@@ -16,11 +16,21 @@ import {
 } from "lucide-react";
 import { FAQ_ITEMS } from "@/data/faq";
 import FAQSchema from "@/components/SEO/FAQSchema";
+import HowToSchema from "@/components/SEO/HowToSchema";
 
 export const metadata: Metadata = {
   title: "Simulateur Capacité d'Emprunt Immobilier Gratuit - Calcul Instantané 2026",
   description:
     "Calculez gratuitement votre capacité d'emprunt immobilier en 2026. Formule HCSF officielle des 35 %, frais de notaire, comparatif 15/20/25 ans. Résultat instantané, aucune inscription.",
+  keywords: [
+    "simulateur capacité d'emprunt",
+    "calculateur prêt immobilier gratuit",
+    "combien puis-je emprunter",
+    "règle HCSF 35%",
+    "calcul mensualité crédit immobilier",
+    "capacité d'emprunt 2026",
+    "simulation emprunt immobilier",
+  ],
   openGraph: {
     title: "Simulateur Capacité d'Emprunt Immobilier Gratuit - Calcul Instantané 2026",
     description:
@@ -140,31 +150,77 @@ const PREVIEW_FAQ = FAQ_ITEMS.slice(0, 4);
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://www.capacimetrimmo.fr/#website",
   name: "CapaciteEmprunt",
   url: "https://www.capacimetrimmo.fr",
   description: "Simulateur gratuit de capacité d'emprunt immobilier pour la France",
+  inLanguage: "fr-FR",
+  publisher: { "@id": "https://www.capacimetrimmo.fr/#organization" },
   potentialAction: {
     "@type": "SearchAction",
-    target: "https://www.capacimetrimmo.fr/faq",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://www.capacimetrimmo.fr/faq?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
   },
 };
 
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
+  "@id": "https://www.capacimetrimmo.fr/simulateur#app",
   name: "Simulateur de capacité d'emprunt immobilier",
   url: "https://www.capacimetrimmo.fr/simulateur",
   applicationCategory: "FinanceApplication",
+  applicationSubCategory: "Mortgage Calculator",
   operatingSystem: "Any",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+  browserRequirements: "Requires JavaScript",
+  inLanguage: "fr-FR",
+  isAccessibleForFree: true,
+  featureList: [
+    "Calcul capacité d'emprunt en temps réel",
+    "Règle HCSF 35 % appliquée",
+    "Comparatif 15/20/25 ans",
+    "Frais de notaire inclus (neuf et ancien)",
+    "Mode optimisation de prêt",
+    "Résultat partageable par URL",
+    "100 % privé, aucune donnée envoyée",
+  ],
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+    availability: "https://schema.org/InStock",
+  },
   description:
-    "Calculez instantanément votre capacité d'emprunt immobilier avec la formule officielle HCSF des 35 %.",
+    "Calculez instantanément votre capacité d'emprunt immobilier avec la formule officielle HCSF des 35 %. Comparatif multi-durée, frais de notaire intégrés, résultat partageable.",
+  provider: { "@id": "https://www.capacimetrimmo.fr/#organization" },
 };
 
 export default function HomePage() {
   return (
     <>
       <FAQSchema items={PREVIEW_FAQ} />
+      <HowToSchema
+        name="Comment calculer sa capacité d'emprunt immobilier ?"
+        description="Calculez votre capacité d'emprunt immobilier en 3 étapes avec notre simulateur gratuit. Résultat instantané basé sur la règle HCSF des 35 %."
+        totalTime="PT2M"
+        steps={[
+          {
+            name: "Renseignez vos revenus nets mensuels",
+            text: "Entrez votre salaire net mensuel — c'est le point de départ de tout calcul de capacité d'emprunt. Les banques appliquent la règle HCSF des 35 % sur ce montant pour calculer votre mensualité maximale.",
+          },
+          {
+            name: "Ajustez les paramètres du prêt",
+            text: "Indiquez votre apport personnel, la durée souhaitée (10 à 25 ans), le taux d'intérêt et le taux d'assurance. Les sliders se mettent à jour en temps réel.",
+          },
+          {
+            name: "Lisez votre budget d'acquisition en temps réel",
+            text: "Le capital empruntable, le budget total incluant l'apport net, le coût des intérêts, l'assurance et le comparatif sur 15/20/25 ans s'affichent immédiatement.",
+          },
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}

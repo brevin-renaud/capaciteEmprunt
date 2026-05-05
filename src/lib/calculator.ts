@@ -36,6 +36,36 @@ export interface DurationScenario {
   totalInsurance: number;
 }
 
+export interface OptimizationInputs {
+  loanAmount: number;
+  apport: number;
+  durationYears: number;
+  annualInterestRate: number;
+  annualInsuranceRate: number;
+  propertyType: PropertyType;
+  salary: number; // used for HCSF check; 0 to skip
+}
+
+export interface OptimizationResults {
+  monthlyPayment: number;
+  totalInterest: number;
+  totalInsurance: number;
+  totalCreditCost: number;
+  notaryFees: number;
+  netContribution: number;
+  totalBudget: number;
+  debtRatio: number;
+  exceedsHCSF: boolean;
+}
+
+export interface OptimizationScenario {
+  durationYears: number;
+  monthlyPayment: number;
+  totalInterest: number;
+  totalInsurance: number;
+  totalCreditCost: number;
+}
+
 // ── Primitive math functions ───────────────────────────────────────────────
 
 export function monthlyRate(annualRatePct: number): number {
@@ -63,12 +93,28 @@ export function computeLoanCapacity(
   return (maxMonthlyPayment * (1 - Math.pow(1 + r, -n))) / r;
 }
 
+/**
+ * Reverse annuity: monthly payment M for a known loan amount P.
+ * M = P × r / [1 − (1+r)^(−n)]
+ * Special case r=0: M = P / n
+ */
+export function computeMonthlyPayment(
+  loanAmount: number,
+  annualRatePct: number,
+  durationYears: number
+): number {
+  const r = monthlyRate(annualRatePct);
+  const n = totalPayments(durationYears);
+  if (r === 0) return loanAmount / n;
+  return (loanAmount * r) / (1 - Math.pow(1 + r, -n));
+}
+
 export function computeTotalInterest(
   monthlyPayment: number,
   durationYears: number,
   loanCapacity: number
 ): number {
-  return monthlyPayment * totalPayments(durationYears) - loanCapacity;
+  return Math.max(0, monthlyPayment * totalPayments(durationYears) - loanCapacity);
 }
 
 export function computeTotalInsurance(
@@ -94,7 +140,7 @@ export function computeDebtRatio(
   return monthlyPayment / salary;
 }
 
-// ── Orchestrators ──────────────────────────────────────────────────────────
+// ── Mode 1: Capacité d'emprunt ─────────────────────────────────────────────
 
 export function simulate(inputs: SimulatorInputs): SimulatorResults {
   const {
@@ -190,4 +236,59 @@ function simulateForDuration(inputs: SimulatorInputs): DurationScenario {
     totalInterest,
     totalInsurance,
   };
+}
+
+// ── Mode 2: Optimisation du prêt ──────────────────────────────────────────
+
+export function optimizeLoan(inputs: OptimizationInputs): OptimizationResults {
+  const {
+    loanAmount,
+    apport,
+    durationYears,
+    annualInterestRate,
+    annualInsuranceRate,
+    propertyType,
+    salary,
+  } = inputs;
+
+  const monthlyPayment = computeMonthlyPayment(loanAmount, annualInterestRate, durationYears);
+  const totalInterest = computeTotalInterest(monthlyPayment, durationYears, loanAmount);
+  const totalInsurance = computeTotalInsurance(loanAmount, annualInsuranceRate, durationYears);
+  const totalCreditCost = totalInterest + totalInsurance;
+  const notaryFees = computeNotaryFees(apport, propertyType);
+  const netContribution = Math.max(0, apport - notaryFees);
+  const totalBudget = loanAmount + netContribution;
+  const debtRatio = salary > 0 ? computeDebtRatio(monthlyPayment, salary) : 0;
+  const exceedsHCSF = salary > 0 && debtRatio > HCSF_MAX_DEBT_RATIO;
+
+  return {
+    monthlyPayment,
+    totalInterest,
+    totalInsurance,
+    totalCreditCost,
+    notaryFees,
+    netContribution,
+    totalBudget,
+    debtRatio,
+    exceedsHCSF,
+  };
+}
+
+export function optimizeLoanMultipleDurations(
+  inputs: OptimizationInputs,
+  durations: ReadonlyArray<number>
+): OptimizationScenario[] {
+  return durations.map((durationYears) => {
+    const { loanAmount, annualInterestRate, annualInsuranceRate } = inputs;
+    const monthlyPayment = computeMonthlyPayment(loanAmount, annualInterestRate, durationYears);
+    const totalInterest = computeTotalInterest(monthlyPayment, durationYears, loanAmount);
+    const totalInsurance = computeTotalInsurance(loanAmount, annualInsuranceRate, durationYears);
+    return {
+      durationYears,
+      monthlyPayment,
+      totalInterest,
+      totalInsurance,
+      totalCreditCost: totalInterest + totalInsurance,
+    };
+  });
 }
