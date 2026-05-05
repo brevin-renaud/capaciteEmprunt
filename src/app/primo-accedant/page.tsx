@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Primo-Accédant 2026 - Toutes les Aides pour Votre Premier Achat Immobilier",
     description: "PTZ, Action Logement, TVA réduite - toutes les aides disponibles pour les primo-accédants en 2026.",
-    url: "https://www.capacimetrimmo.fr/primo-accedant",
+    url: "https://www.capaciteemprunt.fr/primo-accedant",
     type: "article",
     locale: "fr_FR",
   },
-  alternates: { canonical: "https://www.capacimetrimmo.fr/primo-accedant" },
+  alternates: { canonical: "https://www.capaciteemprunt.fr/primo-accedant" },
 };
 
 const AIDES = [
@@ -117,14 +117,14 @@ export default function PrimoAccedant() {
       <ArticleSchema
         headline="Primo-Accédant 2026 - Toutes les Aides pour Votre Premier Achat Immobilier"
         description="Prêt à Taux Zéro, Action Logement, TVA réduite, exonération taxe foncière… Toutes les aides primo-accédants 2026 pour maximiser votre budget immobilier."
-        url="https://www.capacimetrimmo.fr/primo-accedant"
+        url="https://www.capaciteemprunt.fr/primo-accedant"
         datePublished="2025-01-15"
         dateModified="2026-05-05"
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.capacimetrimmo.fr" },
-          { name: "Guide primo-accédant", url: "https://www.capacimetrimmo.fr/primo-accedant" },
+          { name: "Accueil", url: "https://www.capaciteemprunt.fr" },
+          { name: "Guide primo-accédant", url: "https://www.capaciteemprunt.fr/primo-accedant" },
         ]}
       />
       <div className="max-w-4xl mx-auto">

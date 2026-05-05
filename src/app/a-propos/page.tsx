@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "À propos - CapaciteEmprunt",
   description:
     "CapaciteEmprunt est un simulateur gratuit de capacité d'emprunt immobilier, 100 % côté navigateur, sans collecte de données personnelles.",
-  alternates: { canonical: "https://www.capacimetrimmo.fr/a-propos" },
+  alternates: { canonical: "https://www.capaciteemprunt.fr/a-propos" },
   robots: { index: false, follow: false },
 };
 

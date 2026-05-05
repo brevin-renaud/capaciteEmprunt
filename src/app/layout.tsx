@@ -3,7 +3,6 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navigation/Navbar";
 import Footer from "@/components/Footer";
-import ThemeProvider from "@/components/ThemeProvider";
 import OrganizationSchema from "@/components/SEO/OrganizationSchema";
 
 const geist = Geist({
@@ -36,10 +35,10 @@ export const metadata: Metadata = {
     "frais de notaire",
     "prêt immobilier 2026",
   ],
-  authors: [{ name: "CapaciteEmprunt", url: "https://www.capacimetrimmo.fr" }],
+  authors: [{ name: "CapaciteEmprunt", url: "https://www.capaciteemprunt.fr" }],
   creator: "CapaciteEmprunt",
   publisher: "CapaciteEmprunt",
-  metadataBase: new URL("https://www.capacimetrimmo.fr"),
+  metadataBase: new URL("https://www.capaciteemprunt.fr"),
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
@@ -83,31 +82,23 @@ export const metadata: Metadata = {
   category: "finance",
 };
 
-/* Exécuté avant le premier paint pour éviter le flash de thème */
-const themeScript = `(function(){try{var s=localStorage.getItem('theme');var t=s==='dark'||s==='light'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.classList.add(t);}catch(e){}})();`;
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={geist.variable} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    <html lang="fr" className={geist.variable}>
       <body>
         <a href="#main-content" className="skip-link">
           Aller au contenu principal
         </a>
         <OrganizationSchema />
-        <ThemeProvider>
-          <Navbar />
-          <div id="main-content" tabIndex={-1}>
-            {children}
-          </div>
-          <Footer />
-        </ThemeProvider>
+        <Navbar />
+        <div id="main-content" tabIndex={-1}>
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );

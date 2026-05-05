@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Capacité d'Emprunt 2026 : Guide Complet pour Votre Projet Immobilier",
     description: "Guide complet : formule, HCSF, apport, durée, taux - tout pour calculer et optimiser votre capacité d'emprunt.",
-    url: "https://www.capacimetrimmo.fr/guide-capacite-emprunt",
+    url: "https://www.capaciteemprunt.fr/guide-capacite-emprunt",
     type: "article",
     locale: "fr_FR",
   },
-  alternates: { canonical: "https://www.capacimetrimmo.fr/guide-capacite-emprunt" },
+  alternates: { canonical: "https://www.capaciteemprunt.fr/guide-capacite-emprunt" },
 };
 
 function Section({ id, children }: { id: string; children: React.ReactNode }) {
@@ -64,14 +64,14 @@ export default function GuideCapaciteEmprunt() {
       <ArticleSchema
         headline="Capacité d'Emprunt 2026 : Guide Complet pour Votre Projet Immobilier"
         description="Guide complet sur le calcul de la capacité d'emprunt immobilier en 2026 : formule d'annuité, règle HCSF des 35 %, rôle de l'apport, durée et taux."
-        url="https://www.capacimetrimmo.fr/guide-capacite-emprunt"
+        url="https://www.capaciteemprunt.fr/guide-capacite-emprunt"
         datePublished="2025-01-15"
         dateModified="2026-05-05"
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.capacimetrimmo.fr" },
-          { name: "Guide capacité d'emprunt", url: "https://www.capacimetrimmo.fr/guide-capacite-emprunt" },
+          { name: "Accueil", url: "https://www.capaciteemprunt.fr" },
+          { name: "Guide capacité d'emprunt", url: "https://www.capaciteemprunt.fr/guide-capacite-emprunt" },
         ]}
       />
       <div className="max-w-4xl mx-auto">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Calculator, SlidersHorizontal } from "lucide-react";
 import { motion } from "framer-motion";
 import type { SimulatorInputs, OptimizationInputs } from "@/lib/calculator";
@@ -49,12 +49,19 @@ export default function SimulatorTabs({
   const [mode, setMode] = useState<Mode>(initialMode);
   const [capacityInputs, setCapacityInputs] = useState<SimulatorInputs>(initialCapacityInputs);
   const [optInputs, setOptInputs] = useState<OptimizationInputs>(initialOptimizationInputs);
+  const replaceStateTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Keep URL clean
+  // Keep URL clean — debounced to avoid hitting the browser's replaceState rate limit
+  // on mobile when sliders fire many events per second during fast scrolling
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window === "undefined") return;
+    if (replaceStateTimer.current) clearTimeout(replaceStateTimer.current);
+    replaceStateTimer.current = setTimeout(() => {
       window.history.replaceState(null, "", "/simulateur");
-    }
+    }, 300);
+    return () => {
+      if (replaceStateTimer.current) clearTimeout(replaceStateTimer.current);
+    };
   }, [capacityInputs, optInputs]);
 
   const updateCapacity = (patch: Partial<SimulatorInputs>) =>

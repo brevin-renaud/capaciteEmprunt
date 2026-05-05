@@ -193,7 +193,7 @@ export default function Image() {
               fontFamily: "system-ui",
             }}
           >
-            capacimetrimmo.fr
+            capaciteemprunt.fr
           </span>
         </div>
       </div>

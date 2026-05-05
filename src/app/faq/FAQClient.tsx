@@ -100,8 +100,8 @@ function CategorySection({
 }) {
   if (items.length === 0) return null;
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex items-center gap-3 mt-6 first:mt-0">
+    <div className="flex flex-col gap-2 py-4">
+      <div className="flex items-center gap-3 mt-10 first:mt-0">
         <h2
           className="text-sm font-semibold uppercase tracking-widest shrink-0"
           style={{ color: "var(--t-brand)" }}
@@ -218,7 +218,7 @@ export default function FAQClient() {
 
         {/* Vue filtrée : liste plate avec titre de catégorie unique */}
         {activeCategory !== "all" ? (
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             {filtered.map((item) => (
               <AccordionItem
                 key={item.id}
@@ -230,7 +230,7 @@ export default function FAQClient() {
           </div>
         ) : (
           /* Vue "Tous" : sections par thème avec titres */
-          <div className="flex flex-col gap-0">
+          <div className="flex flex-col gap-2">
             {FAQ_CATEGORIES.map(({ id, label }) => (
               <CategorySection
                 key={id}

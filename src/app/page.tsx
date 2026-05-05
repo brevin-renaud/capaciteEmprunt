@@ -21,7 +21,7 @@ import HowToSchema from "@/components/SEO/HowToSchema";
 export const metadata: Metadata = {
   title: "Simulateur Capacité d'Emprunt Immobilier Gratuit - Calcul Instantané 2026",
   description:
-    "Calculez gratuitement votre capacité d'emprunt immobilier en 2026. Formule HCSF officielle des 35 %, frais de notaire, comparatif 15/20/25 ans. Résultat instantané, aucune inscription.",
+    "Calculez gratuitement votre capacité d'emprunt immobilier en 2026. Formule HCSF officielle des 35 %, frais de notaire, comparatif d'années. Résultat instantané, aucune inscription.",
   keywords: [
     "simulateur capacité d'emprunt",
     "calculateur prêt immobilier gratuit",
@@ -35,11 +35,11 @@ export const metadata: Metadata = {
     title: "Simulateur Capacité d'Emprunt Immobilier Gratuit - Calcul Instantané 2026",
     description:
       "Calculez gratuitement votre capacité d'emprunt immobilier en 2026. Formule HCSF officielle des 35 %, frais de notaire, comparatif 15/20/25 ans.",
-    url: "https://www.capacimetrimmo.fr",
+    url: "https://www.capaciteemprunt.fr",
     type: "website",
     locale: "fr_FR",
   },
-  alternates: { canonical: "https://www.capacimetrimmo.fr" },
+  alternates: { canonical: "https://www.capaciteemprunt.fr" },
 };
 
 const FEATURES = [
@@ -150,17 +150,17 @@ const PREVIEW_FAQ = FAQ_ITEMS.slice(0, 4);
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://www.capacimetrimmo.fr/#website",
+  "@id": "https://www.capaciteemprunt.fr/#website",
   name: "CapaciteEmprunt",
-  url: "https://www.capacimetrimmo.fr",
+  url: "https://www.capaciteemprunt.fr",
   description: "Simulateur gratuit de capacité d'emprunt immobilier pour la France",
   inLanguage: "fr-FR",
-  publisher: { "@id": "https://www.capacimetrimmo.fr/#organization" },
+  publisher: { "@id": "https://www.capaciteemprunt.fr/#organization" },
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://www.capacimetrimmo.fr/faq?q={search_term_string}",
+      urlTemplate: "https://www.capaciteemprunt.fr/faq?q={search_term_string}",
     },
     "query-input": "required name=search_term_string",
   },
@@ -169,9 +169,9 @@ const websiteSchema = {
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "@id": "https://www.capacimetrimmo.fr/simulateur#app",
+  "@id": "https://www.capaciteemprunt.fr/simulateur#app",
   name: "Simulateur de capacité d'emprunt immobilier",
-  url: "https://www.capacimetrimmo.fr/simulateur",
+  url: "https://www.capaciteemprunt.fr/simulateur",
   applicationCategory: "FinanceApplication",
   applicationSubCategory: "Mortgage Calculator",
   operatingSystem: "Any",
@@ -195,7 +195,7 @@ const webAppSchema = {
   },
   description:
     "Calculez instantanément votre capacité d'emprunt immobilier avec la formule officielle HCSF des 35 %. Comparatif multi-durée, frais de notaire intégrés, résultat partageable.",
-  provider: { "@id": "https://www.capacimetrimmo.fr/#organization" },
+  provider: { "@id": "https://www.capaciteemprunt.fr/#organization" },
 };
 
 export default function HomePage() {

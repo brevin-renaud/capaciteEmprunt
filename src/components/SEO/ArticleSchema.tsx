@@ -24,19 +24,19 @@ export default function ArticleSchema({
     datePublished,
     dateModified,
     inLanguage: "fr-FR",
-    image: image ?? "https://www.capacimetrimmo.fr/og-image.png",
+    image: image ?? "https://www.capaciteemprunt.fr/og-image.png",
     author: {
       "@type": "Organization",
       name: "CapaciteEmprunt",
-      url: "https://www.capacimetrimmo.fr",
+      url: "https://www.capaciteemprunt.fr",
     },
     publisher: {
       "@type": "Organization",
       name: "CapaciteEmprunt",
-      url: "https://www.capacimetrimmo.fr",
+      url: "https://www.capaciteemprunt.fr",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.capacimetrimmo.fr/og-image.png",
+        url: "https://www.capaciteemprunt.fr/og-image.png",
       },
     },
     mainEntityOfPage: {

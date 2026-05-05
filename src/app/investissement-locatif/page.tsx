@@ -20,11 +20,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Investissement Locatif 2026 - Capacité d'Emprunt et Calcul Différentiel",
     description: "Méthode différentielle, revenus locatifs, cashflow, fiscalité - tout pour réussir votre investissement immobilier.",
-    url: "https://www.capacimetrimmo.fr/investissement-locatif",
+    url: "https://www.capaciteemprunt.fr/investissement-locatif",
     type: "article",
     locale: "fr_FR",
   },
-  alternates: { canonical: "https://www.capacimetrimmo.fr/investissement-locatif" },
+  alternates: { canonical: "https://www.capaciteemprunt.fr/investissement-locatif" },
 };
 
 export default function InvestissementLocatif() {
@@ -33,14 +33,14 @@ export default function InvestissementLocatif() {
       <ArticleSchema
         headline="Investissement Locatif 2026 - Capacité d'Emprunt et Calcul Différentiel"
         description="Calculez votre capacité d'emprunt pour un investissement locatif en 2026 : méthode différentielle, revenus locatifs, cashflow, levier immobilier et fiscalité."
-        url="https://www.capacimetrimmo.fr/investissement-locatif"
+        url="https://www.capaciteemprunt.fr/investissement-locatif"
         datePublished="2025-01-15"
         dateModified="2026-05-05"
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.capacimetrimmo.fr" },
-          { name: "Investissement locatif", url: "https://www.capacimetrimmo.fr/investissement-locatif" },
+          { name: "Accueil", url: "https://www.capaciteemprunt.fr" },
+          { name: "Investissement locatif", url: "https://www.capaciteemprunt.fr/investissement-locatif" },
         ]}
       />
       <div className="max-w-4xl mx-auto">
