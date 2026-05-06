@@ -1,8 +1,9 @@
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navigation/Navbar";
+import OrganizationSchema from "@/components/SEO/OrganizationSchema";
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import ClientLayout from "@/components/ClientLayout";
-import OrganizationSchema from "@/components/SEO/OrganizationSchema";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -93,11 +94,11 @@ export default function RootLayout({
           Aller au contenu principal
         </a>
         <OrganizationSchema />
-        <ThemeProvider>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
-        </ThemeProvider>
+        <Navbar />
+        <div id="main-content" tabIndex={-1}>
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
