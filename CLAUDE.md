@@ -1,6 +1,6 @@
-# CLAUDE.md - EmpruntCapacity
+# CLAUDE.md - CapaciteEmprunt
 
-Simulateur premium de capacité d'emprunt immobilier français, sans backend, avec état partageable via URL.
+Simulateur premium de capacité d'emprunt immobilier français. State partageable via URL, blog avec système d'admin, base PostgreSQL via Supabase.
 
 ## Stack technique
 
@@ -13,21 +13,28 @@ Simulateur premium de capacité d'emprunt immobilier français, sans backend, av
 | Framer Motion | 12.38.0 |
 | Lucide React | 1.14.0 |
 | lz-string | 1.5.0 |
+| Prisma + @prisma/client | 5.22.0 |
+| Zod | 4.4.3 |
+| marked | 18.0.3 |
 
 **Points d'attention :**
-- Tailwind v4 : la config se fait via `@theme` dans [globals.css](src/app/globals.css), **pas** via `tailwind.config.ts`
+- Tailwind v4 : config via `@theme` dans [globals.css](src/app/globals.css), **pas** via `tailwind.config.ts`
 - Icône alerte Lucide : `TriangleAlert` (pas `AlertTriangle`)
 - Turbopack activé par défaut via `next dev`
-- Aucune variable d'environnement nécessaire (100 % client-side)
+- Variables d'env nécessaires : `DATABASE_URL`, `DIRECT_URL`, `ADMIN_PASSWORD`, `NEXT_PUBLIC_APP_URL`
 
 ## Commandes
 
 ```bash
-npm run dev        # Serveur de développement → localhost:3000
-npm run build      # Build de production
-npm run start      # Serveur de production
-npm run lint       # ESLint (config next/core-web-vitals)
-npm run typecheck  # tsc --noEmit (mode strict)
+npm run dev          # Serveur de développement → localhost:3000
+npm run build        # Build de production
+npm run start        # Serveur de production
+npm run lint         # ESLint (config next/core-web-vitals)
+npm run typecheck    # tsc --noEmit (mode strict)
+npm run db:generate  # Met à jour le client Prisma après modif schema
+npm run db:push      # Sync schema → DB (destructif, pas de migration)
+npm run db:migrate   # Crée une migration versionnée
+npm run db:studio    # UI web Prisma Studio
 ```
 
 ## Structure du projet
@@ -35,57 +42,92 @@ npm run typecheck  # tsc --noEmit (mode strict)
 ```
 src/
 ├── app/
-│   ├── layout.tsx                    # Root layout (RootLayout + Navbar)
+│   ├── layout.tsx                    # Root layout (Navbar, OrganizationSchema, font Geist)
 │   ├── page.tsx                      # Page d'accueil (hero, features, FAQ preview)
-│   ├── globals.css                   # Styles globaux + @theme Tailwind + sliders
-│   ├── simulateur/page.tsx           # Page simulateur (initialise Engine avec URL params)
+│   ├── globals.css                   # Styles globaux + @theme Tailwind + sliders + glass
+│   ├── manifest.ts / robots.ts / sitemap.ts / opengraph-image.tsx
+│   ├── simulateur/page.tsx           # Page simulateur (parse URL params → SimulatorTabs)
 │   ├── faq/
 │   │   ├── page.tsx                  # Page FAQ (SSR + FAQSchema JSON-LD)
 │   │   └── FAQClient.tsx             # FAQ interactive (filtres, recherche)
-│   ├── guide-capacite-emprunt/       # Guide éditorial
-│   ├── frais-de-notaire/             # Guide frais notaire
-│   ├── investissement-locatif/       # Guide investissement locatif
-│   ├── pret-a-taux-zero-2026/        # Guide PTZ
-│   ├── primo-accedant/               # Guide primo-accédant
-│   └── taux-immobilier-2026/         # Guide taux immobiliers
+│   ├── blog/
+│   │   ├── page.tsx                  # Listing articles (getAllPostsAsync)
+│   │   └── [slug]/page.tsx           # Article detail (markdown → React via marked)
+│   ├── admin/
+│   │   ├── layout.tsx                # Admin layout (vérifie auth)
+│   │   ├── page.tsx                  # Login screen
+│   │   ├── AdminLoginClient.tsx      # Formulaire login
+│   │   └── articles/
+│   │       ├── page.tsx              # Liste articles
+│   │       ├── ArticlesListClient.tsx
+│   │       ├── ArticleFormClient.tsx # Formulaire création/édition
+│   │       ├── nouveau/page.tsx
+│   │       └── [id]/page.tsx
+│   ├── api/admin/
+│   │   ├── login/route.ts            # POST → token cookie 24h
+│   │   ├── logout/route.ts           # Supprime le cookie
+│   │   └── articles/
+│   │       ├── route.ts              # GET list / POST create
+│   │       └── [id]/route.ts         # GET / PUT / DELETE
+│   ├── a-propos/ / confidentialite/ / mentions-legales/
+│   └── Guides SEO : guide-capacite-emprunt/ frais-de-notaire/ investissement-locatif/
+│       pret-a-taux-zero-2026/ primo-accedant/ taux-immobilier-2026/
 │
 ├── components/
 │   ├── Navigation/Navbar.tsx         # Navbar sticky (desktop + mobile burger)
-│   ├── SEO/FAQSchema.tsx             # JSON-LD schema FAQ
+│   ├── Footer.tsx
+│   ├── ClientLayout.tsx              # Wrapper client-side
+│   ├── SEO/                          # JSON-LD schemas : FAQ, Article, Breadcrumb, HowTo, Organization
+│   ├── blog/MarkdownRenderer.tsx     # marked → React
 │   └── Simulator/
-│       ├── Engine.tsx                # Orchestrateur : state, effets, layout 2 colonnes
+│       ├── UnifiedSimulator.tsx      # Orchestrateur (dual modes, AnimatePresence, deferred values)
+│       ├── SimulatorTabs.tsx         # Tab switcher, traduit capacity ↔ optimization au changement de mode
 │       ├── Inputs/
-│       │   ├── InteractiveSliders.tsx  # 5 sliders (salaire, apport, durée, taux)
-│       │   └── ProjectToggle.tsx       # Toggle neuf / ancien
+│       │   ├── InteractiveSliders.tsx    # Mode capacité : 5 sliders liés
+│       │   ├── OptimizationSliders.tsx   # Mode optimisation : sliders (montant emprunt, salaire…)
+│       │   └── ProjectToggle.tsx         # Toggle neuf / ancien
 │       └── Results/
-│           ├── Dashboard.tsx           # 6 KPI cards avec AnimatedNumber (Framer Motion)
-│           ├── HCSFGauge.tsx           # Jauge taux d'endettement
-│           └── MultiDurationTable.tsx  # Comparatif 15 / 20 / 25 ans
+│           ├── Dashboard.tsx                  # 6 KPI cards avec AnimatedNumber
+│           ├── HCSFGauge.tsx                  # Jauge taux d'endettement
+│           ├── MultiDurationTable.tsx         # Comparatif 15 / 20 / 25 ans (mode capacité)
+│           ├── OptimizationDashboard.tsx      # Dashboard mode optimisation
+│           ├── OptimizationMultiDurationTable.tsx
+│           └── UnifiedDashboard.tsx           # Partagé entre les deux modes
 │
 ├── lib/
-│   ├── calculator.ts                 # Moteur de calcul financier
-│   ├── constants.ts                  # Constantes (HCSF, frais notaire, défauts, clés URL)
-│   └── url-serializer.ts             # Encodage/décodage des inputs dans l'URL (Base36)
+│   ├── calculator.ts        # Moteur de calcul financier (100 % synchrone, client-side)
+│   ├── constants.ts         # HCSF, frais notaire, defaults, clés URL
+│   ├── url-serializer.ts    # Encodage/décodage des inputs dans l'URL (Base36)
+│   ├── prisma.ts            # Singleton Prisma client (évite l'épuisement de connexions Vercel)
+│   ├── admin/auth.ts        # Token-based auth (cookie httpOnly 24h, ADMIN_PASSWORD env)
+│   └── blog/index.ts        # Requêtes DB blog (getAllPostsAsync, getPostBySlugAsync…)
 │
-└── data/
-    └── faq.ts                        # ~20 Q&R en 8 catégories
+├── data/
+│   └── faq.ts               # ~20 Q&R en 8 catégories
+│
+└── prisma/
+    └── schema.prisma        # Modèle Article + index slug/publishedAt/isDraft
 ```
 
 ## Architecture clé
 
-### Flux de données
+### Dual modes du simulateur
 
 ```
-URL params → url-serializer.ts → Engine.tsx (state)
-                                      ↓
-                              calculator.ts (lib)
-                                      ↓
-                    Dashboard + HCSFGauge + MultiDurationTable
+URL params → url-serializer.ts → SimulatorTabs (mode: "capacity" | "optimization")
+                                        ↓
+                             UnifiedSimulator (state, deferred values)
+                                        ↓
+                               calculator.ts (lib)
+                                        ↓
+               Dashboard + HCSFGauge + MultiDurationTable   (mode capacity)
+               OptimizationDashboard + OptimizationMultiDurationTable  (mode optimization)
 ```
 
-- Tout le state simulator vit dans l'URL (pas de store global, pas de backend)
-- `pushToURL()` met à jour l'adresse sans entrée dans l'historique (real-time)
-- Les calculs sont synchrones et purement client-side
+- **Mode capacité** : saisir le salaire → calculer la capacité d'emprunt max
+- **Mode optimisation** : saisir un montant d'emprunt → calculer la faisabilité et scénarios
+- SimulatorTabs traduit automatiquement les inputs lors du changement de mode (capacity → optimization utilise la capacité calculée comme montant de départ)
+- Tout le state vit dans l'URL ; `pushToURL()` met à jour sans entrée historique
 
 ### Calculs financiers (`lib/calculator.ts`)
 
@@ -94,30 +136,25 @@ URL params → url-serializer.ts → Engine.tsx (state)
 - **Taux d'endettement HCSF** : plafond 35 % du salaire net
 - **Frais de notaire** : 2,5 % (neuf) / 7,5 % (ancien)
 - **Assurance** : `capital × taux × années`
-- `simulate(inputs)` → résultat complet
+- `simulate(inputs)` → résultat complet (mode capacité)
 - `simulateMultipleDurations(inputs, [15,20,25])` → comparatif
+- `optimizeLoan(inputs)` → résultats mode optimisation
+- `optimizeLoanMultipleDurations(inputs, [15,20,25])` → comparatif optimisation
 
 #### Règle apport / frais de notaire
 
-L'apport saisi par l'utilisateur est un **apport total** (pas un apport net). Le moteur doit :
+L'apport saisi est un **apport total** (pas un apport net). Le moteur :
 
-1. Calculer les frais de notaire sur le prix du bien (`apportTotal × tauxNotaire`)
-2. Les soustraire de l'apport pour obtenir l'apport net : `apportNet = apportTotal - fraisNotaire`
-3. Si `apportNet < 0` (apport insuffisant pour couvrir les frais) :
-   - Les frais non couverts s'ajoutent au capital emprunté si la mensualité résultante reste sous le plafond HCSF
-   - Sinon, la simulation est bloquée et un message d'erreur explicite est affiché
-4. Le Dashboard affiche toujours les deux valeurs : **Apport total saisi** et **Apport net effectif**
+1. Calcule les frais de notaire sur le prix du bien
+2. Soustrait les frais : `apportNet = apportTotal - fraisNotaire`
+3. Si `apportNet < 0` : les frais non couverts s'ajoutent au capital (si HCSF le permet), sinon erreur explicite
+4. Le Dashboard affiche les deux : **Apport total saisi** et **Apport net effectif**
 
-### Comportement des sliders interdépendants (`InteractiveSliders.tsx`)
+### Comportement des sliders interdépendants
 
-Les sliders **mensualité** et **capacité d'emprunt** sont liés en temps réel :
+Les sliders **mensualité** et **capacité d'emprunt** sont liés en temps réel (bidirectionnel). C'est l'effet "Premium" intentionnel — **ne pas le casser**. L'Engine/UnifiedSimulator orchestre ; les sliders ne se synchronisent pas directement.
 
-- Déplacer le slider mensualité → recalcule et met à jour instantanément la capacité d'emprunt affichée
-- Déplacer le slider capacité → recalcule et met à jour instantanément la mensualité affichée
-- Ce couplage bidirectionnel est intentionnel et constitue l'effet "Premium" de l'interface - **ne pas le casser**
-- L'Engine.tsx est responsable de l'orchestration ; les sliders ne doivent pas se synchroniser directement entre eux
-
-### Plages des sliders (`InteractiveSliders.tsx`)
+### Plages des sliders
 
 | Slider | Min | Max | Pas |
 |---|---|---|---|
@@ -127,9 +164,38 @@ Les sliders **mensualité** et **capacité d'emprunt** sont liés en temps réel
 | Taux crédit | 0,5 % | 7,0 % | 0,05 |
 | Taux assurance | 0,1 % | 1,0 % | 0,01 |
 
-## Design system
+## Base de données (Prisma + Supabase)
 
-Couleurs de marque (CSS variables dans `globals.css`) :
+Schema `capacite`, un seul modèle :
+
+```prisma
+model Article {
+  id                 String    @id @default(uuid())
+  slug               String    @unique
+  title              String
+  description        String
+  content            String    // markdown
+  author             String    @default("CapaciteEmprunt")
+  category           String    @default("Immobilier")
+  isDraft            Boolean   @default(true)
+  publishedAt        DateTime?
+  scheduledPublishAt DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+```
+
+- `isDraft: true` → caché du public
+- `scheduledPublishAt` → publication différée
+- Indexes sur `slug`, `publishedAt`, `isDraft`
+
+## Système admin
+
+Auth : cookie `admin_token` (httpOnly, sameSite=strict, 24h), généré côté serveur depuis `ADMIN_PASSWORD`.
+Routes : `/admin` → login, `/admin/articles` → CRUD complet.
+API : `/api/admin/articles` (GET list / POST create) + `/api/admin/articles/[id]` (GET / PUT / DELETE).
+
+## Design system
 
 | Token | Valeur | Usage |
 |---|---|---|
@@ -137,21 +203,20 @@ Couleurs de marque (CSS variables dans `globals.css`) :
 | `brand-400` | `#268e6b` | Secondaire |
 | `brand-200` | `#80c0aa` | Accent clair |
 
-Classes utilitaires custom :
-- `.glass` - backdrop blur léger, fond transparent
-- `.glass-strong` - blur fort avec teinte teal (highlights)
+Classes custom : `.glass` (backdrop blur léger), `.glass-strong` (blur fort, teinte teal).
 
 ## SEO
 
-- Chaque page définit ses `metadata` (title, description) côté serveur
-- FAQ : JSON-LD schema via `FAQSchema.tsx` pour rich snippets Google
-- Pages guides : contenu éditorial long-format pour SEO organique
-- `data/faq.ts` structure : `{ id, category, question, answer, keywords }`
+- `metadata` serveur sur chaque page (title, description)
+- JSON-LD via composants dans `SEO/` : FAQ, Article, Breadcrumb, HowTo, Organization
+- Blog : contenu markdown long-format, rich snippets via ArticleSchema
+- `sitemap.ts`, `robots.ts`, `opengraph-image.tsx`
 
 ## Conventions de code
 
+- **Pas d'emojis** dans le code, les composants ou les textes UI — utiliser une icône Lucide React
 - Alias d'import : `@/*` → `src/*`
 - TypeScript strict : nulls explicites, pas de `any`
-- Pas de commentaires sur le "quoi" - seulement sur le "pourquoi" si non-évident
-- Composants React : fichiers `.tsx`, logique dans `Engine.tsx`, UI dans les sous-composants
+- Pas de commentaires sur le "quoi" — seulement sur le "pourquoi" si non-évident
 - Pas de state management externe (pas de Zustand, Redux, etc.)
+- Validation avec Zod aux boundaries API (routes admin)

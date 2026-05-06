@@ -18,11 +18,11 @@ const euroFmt = (v: number) =>
 type ScenarioKey = keyof DurationScenario;
 
 const COLUMNS: { key: ScenarioKey; label: string; format: (v: number) => string }[] = [
-  { key: "durationYears",  label: "Durée",         format: (v) => `${v} ans` },
-  { key: "monthlyPayment", label: "Mensualité",     format: euroFmt },
-  { key: "loanCapacity",   label: "Capacité prêt", format: euroFmt },
-  { key: "totalBudget",    label: "Budget total",   format: euroFmt },
-  { key: "totalInterest",  label: "Coût intérêts", format: euroFmt },
+  { key: "durationYears", label: "Durée", format: (v) => `${v} ans` },
+  { key: "monthlyPayment", label: "Mensualité", format: euroFmt },
+  { key: "loanCapacity", label: "Capacité prêt", format: euroFmt },
+  { key: "totalBudget", label: "Budget total", format: euroFmt },
+  { key: "totalInterest", label: "Coût intérêts", format: euroFmt },
 ];
 
 export default function MultiDurationTable({ scenarios, targetDebtRatio }: MultiDurationTableProps) {
@@ -69,8 +69,8 @@ export default function MultiDurationTable({ scenarios, targetDebtRatio }: Multi
                         col.key === "totalBudget"
                           ? "var(--t-brand)"
                           : col.key === "durationYears"
-                          ? "var(--t-primary)"
-                          : "var(--t-secondary)",
+                            ? "var(--t-primary)"
+                            : "var(--t-secondary)",
                       fontWeight: col.key === "totalBudget" ? 600 : 400,
                     }}
                   >
@@ -87,6 +87,12 @@ export default function MultiDurationTable({ scenarios, targetDebtRatio }: Multi
         La mensualité est identique sur toutes les durées car elle est plafonnée à{" "}
         {targetDebtRatio} % du salaire net - la durée influence la capacité d&apos;emprunt
         et le coût total.
+      </p>
+      <p className="text-xs leading-relaxed flex items-start gap-1.5" style={{ color: "var(--t-faint)" }}>
+        Les taux d'intérêt réels varient selon la durée du prêt : les banques
+        appliquent généralement des taux plus élevés sur les longues durées (20-25 ans)
+        que sur les courtes (10-15 ans). Les valeurs ci-dessus utilisent le même taux
+        pour simplifier la comparaison.
       </p>
     </div>
   );
