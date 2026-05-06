@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import ThemeToggle from "@/components/ThemeToggle";
+import { useRef, useState } from "react";
 
 const NAV_PRIMARY = [
   { href: "/", label: "Accueil" },
@@ -25,6 +24,15 @@ export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openResources = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setResourcesOpen(true);
+  };
+  const scheduleClose = () => {
+    closeTimer.current = setTimeout(() => setResourcesOpen(false), 150);
+  };
 
   const allLinks = [...NAV_PRIMARY, ...NAV_RESOURCES];
 
@@ -89,9 +97,9 @@ export default function Navbar() {
             }}
           >
             <button
-              onMouseEnter={() => setResourcesOpen(true)}
-              onMouseLeave={() => setResourcesOpen(false)}
-              onFocus={() => setResourcesOpen(true)}
+              onMouseEnter={openResources}
+              onMouseLeave={scheduleClose}
+              onFocus={openResources}
               onKeyDown={(e) => {
                 if (e.key === "Escape") setResourcesOpen(false);
               }}
@@ -134,8 +142,8 @@ export default function Navbar() {
                   backdropFilter: "blur(16px)",
                   boxShadow: "0 16px 40px rgba(0,0,0,0.25)",
                 }}
-                onMouseEnter={() => setResourcesOpen(true)}
-                onMouseLeave={() => setResourcesOpen(false)}
+                onMouseEnter={openResources}
+                onMouseLeave={scheduleClose}
               >
                 {NAV_RESOURCES.map(({ href, label }) => (
                   <Link
@@ -158,9 +166,8 @@ export default function Navbar() {
           </li>
         </ul>
 
-        {/* CTA + ThemeToggle desktop */}
+        {/* CTA desktop */}
         <div className="hidden md:flex items-center gap-2 shrink-0">
-          <ThemeToggle />
           <Link
             href="/simulateur"
             className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-semibold transition-opacity hover:opacity-90"
@@ -172,7 +179,6 @@ export default function Navbar() {
 
         {/* Burger mobile */}
         <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
           <button
             className="p-2 rounded-lg"
             style={{ color: "var(--t-secondary)" }}

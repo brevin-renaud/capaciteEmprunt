@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     title: "Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité",
     description:
       "Zones A/B/C, plafonds de ressources et quotités - tout comprendre sur le Prêt à Taux Zéro pour les primo-accédants en 2026.",
-    url: "https://www.capacimetrimmo.fr/pret-a-taux-zero-2026",
+    url: "https://www.capaciteemprunt.fr/pret-a-taux-zero-2026",
     type: "article",
     locale: "fr_FR",
   },
-  alternates: { canonical: "https://www.capacimetrimmo.fr/pret-a-taux-zero-2026" },
+  alternates: { canonical: "https://www.capaciteemprunt.fr/pret-a-taux-zero-2026" },
 };
 
 const ZONES = [
@@ -74,14 +74,14 @@ export default function PTZ2026() {
       <ArticleSchema
         headline="Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité"
         description="Guide complet sur le Prêt à Taux Zéro (PTZ) 2026 : conditions, zones géographiques, plafonds de ressources et intégration dans un plan de financement immobilier."
-        url="https://www.capacimetrimmo.fr/pret-a-taux-zero-2026"
+        url="https://www.capaciteemprunt.fr/pret-a-taux-zero-2026"
         datePublished="2025-01-15"
         dateModified="2026-05-05"
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.capacimetrimmo.fr" },
-          { name: "Prêt à Taux Zéro 2026", url: "https://www.capacimetrimmo.fr/pret-a-taux-zero-2026" },
+          { name: "Accueil", url: "https://www.capaciteemprunt.fr" },
+          { name: "Prêt à Taux Zéro 2026", url: "https://www.capaciteemprunt.fr/pret-a-taux-zero-2026" },
         ]}
       />
 
@@ -272,11 +272,12 @@ export default function PTZ2026() {
               du foyer et la zone.
             </p>
 
+            <div className="overflow-x-auto">
             <div
               className="rounded-2xl overflow-hidden"
               style={{ border: "1px solid var(--bd-card)" }}
             >
-              <table className="w-full text-sm">
+              <table className="w-full text-sm min-w-120">
                 <caption className="sr-only">Plafonds de ressources PTZ 2026 selon la composition du foyer et la zone géographique</caption>
                 <thead>
                   <tr style={{ background: "var(--bg-brand-medium)" }}>
@@ -322,6 +323,7 @@ export default function PTZ2026() {
                   ))}
                 </tbody>
               </table>
+            </div>
             </div>
           </section>
 

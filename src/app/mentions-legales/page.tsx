@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Mentions légales - CapaciteEmprunt",
   description: "Mentions légales du simulateur CapaciteEmprunt : éditeur, hébergeur, propriété intellectuelle et responsabilité.",
-  alternates: { canonical: "https://www.capacimetrimmo.fr/mentions-legales" },
+  alternates: { canonical: "https://www.capaciteemprunt.fr/mentions-legales" },
   robots: { index: false, follow: false },
 };
 
@@ -38,7 +38,7 @@ export default function MentionsLegales() {
             1. Éditeur du site
           </h2>
           <p className="text-base leading-relaxed">
-            Le site <strong>capacimetrimmo.fr</strong> est édité à titre personnel.
+            Le site <strong>capaciteemprunt.fr</strong> est édité à titre personnel.
           </p>
           <p className="text-base leading-relaxed">
             Contact :{" "}

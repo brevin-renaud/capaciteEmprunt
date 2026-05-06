@@ -1,6 +1,6 @@
 "use client";
 
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { Check, Link } from "lucide-react";
 import { simulate, simulateMultipleDurations } from "@/lib/calculator";
 import type { SimulatorInputs } from "@/lib/calculator";
@@ -20,11 +20,17 @@ interface EngineProps {
 
 export default function Engine({ inputs, onInputChange }: EngineProps) {
   const [copied, setCopied] = useState(false);
+  const replaceStateTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window === "undefined") return;
+    if (replaceStateTimer.current) clearTimeout(replaceStateTimer.current);
+    replaceStateTimer.current = setTimeout(() => {
       window.history.replaceState(null, "", "/simulateur");
-    }
+    }, 300);
+    return () => {
+      if (replaceStateTimer.current) clearTimeout(replaceStateTimer.current);
+    };
   }, [inputs]);
 
   const handleShare = () => {

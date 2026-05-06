@@ -35,7 +35,7 @@ export default function Footer() {
               className="text-lg font-bold tracking-tight"
               style={{ color: "var(--t-primary)" }}
             >
-              Capacimètr<span style={{ color: "var(--t-brand)" }}>Immo</span>
+              Capacite<span style={{ color: "var(--t-brand)" }}>Emprunt</span>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs" style={{ color: "var(--t-muted)" }}>
               Simulateur gratuit de capacité d&apos;emprunt immobilier. Calcul

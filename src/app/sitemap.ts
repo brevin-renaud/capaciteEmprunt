@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllSlugsAsync } from "@/lib/blog";
 
-const BASE_URL = "https://www.capacimetrimmo.fr";
+const BASE_URL = "https://www.capaciteemprunt.fr";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();

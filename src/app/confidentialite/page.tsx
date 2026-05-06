@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Politique de confidentialité - CapaciteEmprunt",
   description:
     "Politique de confidentialité de CapaciteEmprunt : zéro donnée collectée, calculs 100 % côté navigateur, aucun cookie publicitaire.",
-  alternates: { canonical: "https://www.capacimetrimmo.fr/confidentialite" },
+  alternates: { canonical: "https://www.capaciteemprunt.fr/confidentialite" },
   robots: { index: false, follow: false },
 };
 

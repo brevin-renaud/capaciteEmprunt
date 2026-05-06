@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/mentions-legales", "/confidentialite", "/a-propos"],
       },
     ],
-    sitemap: "https://www.capacimetrimmo.fr/sitemap.xml",
-    host: "https://www.capacimetrimmo.fr",
+    sitemap: "https://www.capaciteemprunt.fr/sitemap.xml",
+    host: "https://www.capaciteemprunt.fr",
   };
 }

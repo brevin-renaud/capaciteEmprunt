@@ -37,7 +37,7 @@ function KPICard({ label, value, format, icon, highlight, warning, fullWidth, di
     <div
       className={[
         "rounded-xl p-4 flex flex-col gap-2",
-        fullWidth ? "col-span-2" : "",
+        fullWidth ? "sm:col-span-2" : "",
         highlight ? "glass-strong" : "glass",
       ].join(" ")}
       style={{
@@ -95,7 +95,7 @@ export default function Dashboard({ results }: DashboardProps) {
         Votre capacité d&apos;acquisition
       </h2>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {/* Row 1: PRIMARY — full width, highlighted */}
         <KPICard
           label="Budget total d'acquisition"
