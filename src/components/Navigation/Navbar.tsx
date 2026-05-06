@@ -8,6 +8,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 const NAV_PRIMARY = [
   { href: "/", label: "Accueil" },
   { href: "/simulateur", label: "Simulateur" },
+  { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ" },
 ] as const;
 

@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navigation/Navbar";
-import Footer from "@/components/Footer";
+import ClientLayout from "@/components/ClientLayout";
 import ThemeProvider from "@/components/ThemeProvider";
 import OrganizationSchema from "@/components/SEO/OrganizationSchema";
 
@@ -102,11 +101,9 @@ export default function RootLayout({
         </a>
         <OrganizationSchema />
         <ThemeProvider>
-          <Navbar />
-          <div id="main-content" tabIndex={-1}>
+          <ClientLayout>
             {children}
-          </div>
-          <Footer />
+          </ClientLayout>
         </ThemeProvider>
       </body>
     </html>
