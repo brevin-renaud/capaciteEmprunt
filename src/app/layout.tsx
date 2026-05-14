@@ -1,9 +1,9 @@
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navigation/Navbar";
+import OrganizationSchema from "@/components/SEO/OrganizationSchema";
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navigation/Navbar";
-import Footer from "@/components/Footer";
-import OrganizationSchema from "@/components/SEO/OrganizationSchema";
 
 const geist = Geist({
   subsets: ["latin"],
