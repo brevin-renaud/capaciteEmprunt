@@ -35,18 +35,18 @@ export default function Footer() {
               className="text-lg font-bold tracking-tight"
               style={{ color: "var(--t-primary)" }}
             >
-              Capacite<span style={{ color: "var(--t-brand)" }}>Emprunt</span>
+              Emprunt<span style={{ color: "var(--t-brand)" }}>Calcul</span>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs" style={{ color: "var(--t-muted)" }}>
               Simulateur gratuit de capacité d&apos;emprunt immobilier. Calcul
               instantané, aucune donnée collectée.
             </p>
             <a
-              href="mailto:contact@impotscouple.fr"
+              href="mailto:contact@empruntcalcul.fr"
               className="text-sm mt-1 hover:underline"
               style={{ color: "var(--t-brand)" }}
             >
-              contact@impotscouple.fr
+              contact@empruntcalcul.fr
             </a>
           </div>
 
@@ -116,7 +116,7 @@ export default function Footer() {
           className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t text-xs"
           style={{ borderColor: "var(--bd-brand-nav)", color: "var(--t-muted)" }}
         >
-          <p>© {new Date().getFullYear()} CapaciteEmprunt - Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} EmpruntCalcul - Tous droits réservés.</p>
           <p>Simulation à titre indicatif, basée sur la réglementation HCSF 2026.</p>
         </div>
       </div>

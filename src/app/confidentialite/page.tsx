@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité - CapaciteEmprunt",
+  title: "Politique de confidentialité - EmpruntCalcul",
   description:
-    "Politique de confidentialité de CapaciteEmprunt : zéro donnée collectée, calculs 100 % côté navigateur, aucun cookie publicitaire.",
-  alternates: { canonical: "https://www.capaciteemprunt.fr/confidentialite" },
+    "Politique de confidentialité de EmpruntCalcul : zéro donnée collectée, calculs 100 % côté navigateur, aucun cookie publicitaire.",
+  alternates: { canonical: "https://www.empruntcalcul.fr/confidentialite" },
   robots: { index: false, follow: false },
 };
 
@@ -46,7 +46,7 @@ export default function Confidentialite() {
             Notre engagement : zéro stockage
           </p>
           <p className="text-base leading-relaxed">
-            CapaciteEmprunt est conçu dès l&apos;origine pour ne collecter aucune
+            EmpruntCalcul est conçu dès l&apos;origine pour ne collecter aucune
             donnée personnelle. Tous les calculs s&apos;exécutent localement dans
             votre navigateur. Aucune information ne transite vers nos serveurs.
           </p>
@@ -57,7 +57,7 @@ export default function Confidentialite() {
             1. Données collectées
           </h2>
           <p className="text-base leading-relaxed">
-            CapaciteEmprunt ne collecte <strong>aucune donnée personnelle</strong> :
+            EmpruntCalcul ne collecte <strong>aucune donnée personnelle</strong> :
           </p>
           <ul className="list-disc pl-5 flex flex-col gap-1.5 text-base">
             <li>Aucune identité (nom, prénom, email)</li>
@@ -127,18 +127,18 @@ export default function Confidentialite() {
           <p className="text-base leading-relaxed">
             Conformément au Règlement Général sur la Protection des Données (RGPD),
             vous disposez de droits sur vos données personnelles (accès, rectification,
-            suppression, portabilité, opposition). Dans la mesure où CapaciteEmprunt
+            suppression, portabilité, opposition). Dans la mesure où EmpruntCalcul
             ne stocke aucune donnée vous concernant, ces droits ne s&apos;appliquent
             pas dans le cadre de l&apos;utilisation du simulateur.
           </p>
           <p className="text-base leading-relaxed">
             Pour toute question relative à la confidentialité, contactez-nous à{" "}
             <a
-              href="mailto:contact@impotscouple.fr"
+              href="mailto:contact@empruntcalcul.fr"
               className="hover:underline"
               style={{ color: "var(--t-brand)" }}
             >
-              contact@impotscouple.fr
+              contact@empruntcalcul.fr
             </a>
             .
           </p>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import ArticleSchema from "@/components/SEO/ArticleSchema";
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     title: "Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité",
     description:
       "Zones A/B/C, plafonds de ressources et quotités - tout comprendre sur le Prêt à Taux Zéro pour les primo-accédants en 2026.",
-    url: "https://www.capaciteemprunt.fr/pret-a-taux-zero-2026",
+    url: "https://www.empruntcalcul.fr/pret-a-taux-zero-2026",
     type: "article",
     locale: "fr_FR",
   },
-  alternates: { canonical: "https://www.capaciteemprunt.fr/pret-a-taux-zero-2026" },
+  alternates: { canonical: "https://www.empruntcalcul.fr/pret-a-taux-zero-2026" },
 };
 
 const ZONES = [
@@ -74,14 +74,14 @@ export default function PTZ2026() {
       <ArticleSchema
         headline="Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité"
         description="Guide complet sur le Prêt à Taux Zéro (PTZ) 2026 : conditions, zones géographiques, plafonds de ressources et intégration dans un plan de financement immobilier."
-        url="https://www.capaciteemprunt.fr/pret-a-taux-zero-2026"
+        url="https://www.empruntcalcul.fr/pret-a-taux-zero-2026"
         datePublished="2025-01-15"
         dateModified="2026-05-05"
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.capaciteemprunt.fr" },
-          { name: "Prêt à Taux Zéro 2026", url: "https://www.capaciteemprunt.fr/pret-a-taux-zero-2026" },
+          { name: "Accueil", url: "https://www.empruntcalcul.fr" },
+          { name: "Prêt à Taux Zéro 2026", url: "https://www.empruntcalcul.fr/pret-a-taux-zero-2026" },
         ]}
       />
 

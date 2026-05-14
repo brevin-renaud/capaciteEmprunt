@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import SimulatorTabs from "@/components/Simulator/SimulatorTabs";
 import { deserializeFromParams, deserializeOptimizationFromParams } from "@/lib/url-serializer";
 import { OPTIMIZATION_URL_KEYS } from "@/lib/constants";
@@ -7,18 +7,18 @@ import BreadcrumbSchema from "@/components/SEO/BreadcrumbSchema";
 const loanServiceSchema = {
   "@context": "https://schema.org",
   "@type": "LoanService",
-  "@id": "https://www.capaciteemprunt.fr/simulateur#service",
+  "@id": "https://www.empruntcalcul.fr/simulateur#service",
   name: "Simulateur de capacité d'emprunt immobilier",
   description:
     "Calculez instantanément votre capacité d'emprunt immobilier selon la règle HCSF des 35 %. Formule bancaire officielle, frais de notaire, comparatif 15/20/25 ans.",
   serviceType: "Mortgage Capacity Calculator",
   loanType: "https://schema.org/MortgageLoan",
-  url: "https://www.capaciteemprunt.fr/simulateur",
+  url: "https://www.empruntcalcul.fr/simulateur",
   areaServed: { "@type": "Country", name: "France", "@id": "https://www.wikidata.org/wiki/Q142" },
   isAccessibleForFree: true,
   availableLanguage: { "@type": "Language", name: "French", alternateName: "fr" },
-  termsOfService: "https://www.capaciteemprunt.fr/mentions-legales",
-  provider: { "@id": "https://www.capaciteemprunt.fr/#organization" },
+  termsOfService: "https://www.empruntcalcul.fr/mentions-legales",
+  provider: { "@id": "https://www.empruntcalcul.fr/#organization" },
   offers: {
     "@type": "Offer",
     price: "0",
@@ -43,11 +43,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Simulateur de Capacité d'Emprunt Immobilier - Calcul Instantané",
     description: "Calculez votre capacité d'emprunt immobilier en temps réel selon la règle HCSF des 35 %.",
-    url: "https://www.capaciteemprunt.fr/simulateur",
+    url: "https://www.empruntcalcul.fr/simulateur",
     type: "website",
     locale: "fr_FR",
   },
-  alternates: { canonical: "https://www.capaciteemprunt.fr/simulateur" },
+  alternates: { canonical: "https://www.empruntcalcul.fr/simulateur" },
 };
 
 interface PageProps {
@@ -78,8 +78,8 @@ export default async function SimulateurPage({ searchParams }: PageProps) {
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.capaciteemprunt.fr" },
-          { name: "Simulateur", url: "https://www.capaciteemprunt.fr/simulateur" },
+          { name: "Accueil", url: "https://www.empruntcalcul.fr" },
+          { name: "Simulateur", url: "https://www.empruntcalcul.fr/simulateur" },
         ]}
       />
       {/* Hero */}

@@ -1,4 +1,4 @@
-interface ArticleSchemaProps {
+﻿interface ArticleSchemaProps {
   headline: string;
   description: string;
   url: string;
@@ -24,19 +24,19 @@ export default function ArticleSchema({
     datePublished,
     dateModified,
     inLanguage: "fr-FR",
-    image: image ?? "https://www.capaciteemprunt.fr/og-image.png",
+    image: image ?? "https://www.empruntcalcul.fr/og-image.png",
     author: {
       "@type": "Organization",
-      name: "CapaciteEmprunt",
-      url: "https://www.capaciteemprunt.fr",
+      name: "EmpruntCalcul",
+      url: "https://www.empruntcalcul.fr",
     },
     publisher: {
       "@type": "Organization",
-      name: "CapaciteEmprunt",
-      url: "https://www.capaciteemprunt.fr",
+      name: "EmpruntCalcul",
+      url: "https://www.empruntcalcul.fr",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.capaciteemprunt.fr/og-image.png",
+        url: "https://www.empruntcalcul.fr/og-image.png",
       },
     },
     mainEntityOfPage: {

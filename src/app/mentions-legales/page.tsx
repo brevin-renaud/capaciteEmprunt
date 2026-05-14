@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Mentions légales - CapaciteEmprunt",
-  description: "Mentions légales du simulateur CapaciteEmprunt : éditeur, hébergeur, propriété intellectuelle et responsabilité.",
-  alternates: { canonical: "https://www.capaciteemprunt.fr/mentions-legales" },
+  title: "Mentions légales - EmpruntCalcul",
+  description: "Mentions légales du simulateur EmpruntCalcul : éditeur, hébergeur, propriété intellectuelle et responsabilité.",
+  alternates: { canonical: "https://www.empruntcalcul.fr/mentions-legales" },
   robots: { index: false, follow: false },
 };
 
@@ -38,16 +38,16 @@ export default function MentionsLegales() {
             1. Éditeur du site
           </h2>
           <p className="text-base leading-relaxed">
-            Le site <strong>capaciteemprunt.fr</strong> est édité à titre personnel.
+            Le site <strong>empruntcalcul.fr</strong> est édité à titre personnel.
           </p>
           <p className="text-base leading-relaxed">
             Contact :{" "}
             <a
-              href="mailto:contact@impotscouple.fr"
+              href="mailto:contact@empruntcalcul.fr"
               className="hover:underline"
               style={{ color: "var(--t-brand)" }}
             >
-              contact@impotscouple.fr
+              contact@empruntcalcul.fr
             </a>
           </p>
         </section>
@@ -95,7 +95,7 @@ export default function MentionsLegales() {
             4. Limitation de responsabilité
           </h2>
           <p className="text-base leading-relaxed">
-            Les simulations proposées par CapaciteEmprunt sont fournies à titre
+            Les simulations proposées par EmpruntCalcul sont fournies à titre
             indicatif uniquement. Elles ne constituent pas un conseil financier,
             bancaire ou juridique et ne sauraient engager la responsabilité de
             l&apos;éditeur.

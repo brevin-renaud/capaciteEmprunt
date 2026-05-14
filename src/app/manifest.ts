@@ -2,8 +2,8 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "CapaciteEmprunt - Simulateur de capacité d'emprunt",
-    short_name: "CapaciteEmprunt",
+    name: "EmpruntCalcul - Simulateur de capacité d'emprunt",
+    short_name: "EmpruntCalcul",
     description:
       "Calculez gratuitement votre capacité d'emprunt immobilier avec la formule HCSF officielle des 35 %.",
     start_url: "/simulateur",

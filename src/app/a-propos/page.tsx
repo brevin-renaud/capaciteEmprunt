@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "À propos - CapaciteEmprunt",
+  title: "À propos - EmpruntCalcul",
   description:
-    "CapaciteEmprunt est un simulateur gratuit de capacité d'emprunt immobilier, 100 % côté navigateur, sans collecte de données personnelles.",
-  alternates: { canonical: "https://www.capaciteemprunt.fr/a-propos" },
+    "EmpruntCalcul est un simulateur gratuit de capacité d'emprunt immobilier, 100 % côté navigateur, sans collecte de données personnelles.",
+  alternates: { canonical: "https://www.empruntcalcul.fr/a-propos" },
   robots: { index: false, follow: false },
 };
 
@@ -26,7 +26,7 @@ export default function APropos() {
         className="text-3xl md:text-4xl font-bold mb-4"
         style={{ color: "var(--t-primary)" }}
       >
-        À propos de CapaciteEmprunt
+        À propos de EmpruntCalcul
       </h1>
       <p className="text-sm mb-12" style={{ color: "var(--t-muted)" }}>
         Dernière mise à jour : mai 2026
@@ -38,7 +38,7 @@ export default function APropos() {
             Notre mission
           </h2>
           <p className="text-base leading-relaxed">
-            CapaciteEmprunt est né d&apos;un constat simple : beaucoup de personnes en
+            EmpruntCalcul est né d&apos;un constat simple : beaucoup de personnes en
             projet immobilier ne savent pas combien elles peuvent réellement emprunter
             avant de consulter une banque ou un courtier. Les outils existants sont
             souvent opaques, contraignants à l&apos;inscription, ou conçus pour collecter
@@ -80,7 +80,7 @@ export default function APropos() {
             Respect de votre vie privée
           </h2>
           <p className="text-base leading-relaxed">
-            CapaciteEmprunt fonctionne en mode <strong>stateless</strong> : aucune
+            EmpruntCalcul fonctionne en mode <strong>stateless</strong> : aucune
             donnée n&apos;est envoyée à un serveur, stockée en base de données, ou
             associée à votre identité. Tous les calculs s&apos;effectuent directement
             dans votre navigateur.
@@ -119,11 +119,11 @@ export default function APropos() {
           <p className="text-base leading-relaxed">
             Une question, un retour, une suggestion d&apos;amélioration ? Écrivez-nous à{" "}
             <a
-              href="mailto:contact@impotscouple.fr"
+              href="mailto:contact@empruntcalcul.fr"
               className="hover:underline"
               style={{ color: "var(--t-brand)" }}
             >
-              contact@impotscouple.fr
+              contact@empruntcalcul.fr
             </a>
             .
           </p>

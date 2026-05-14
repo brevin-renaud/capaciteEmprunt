@@ -18,8 +18,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Simulateur de capacité d'emprunt immobilier | CapaciteEmprunt",
-    template: "%s | CapaciteEmprunt",
+    default: "Simulateur de capacité d'emprunt immobilier | EmpruntCalcul",
+    template: "%s | EmpruntCalcul",
   },
   description:
     "Calculez gratuitement votre capacité d'emprunt immobilier. Formule HCSF 35 %, frais de notaire, comparatif 15/20/25 ans. Résultat instantané, aucune inscription.",
@@ -35,20 +35,20 @@ export const metadata: Metadata = {
     "frais de notaire",
     "prêt immobilier 2026",
   ],
-  authors: [{ name: "CapaciteEmprunt", url: "https://www.capaciteemprunt.fr" }],
-  creator: "CapaciteEmprunt",
-  publisher: "CapaciteEmprunt",
-  metadataBase: new URL("https://www.capaciteemprunt.fr"),
+  authors: [{ name: "EmpruntCalcul", url: "https://www.empruntcalcul.fr" }],
+  creator: "EmpruntCalcul",
+  publisher: "EmpruntCalcul",
+  metadataBase: new URL("https://www.empruntcalcul.fr"),
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "CapaciteEmprunt",
+    title: "EmpruntCalcul",
   },
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    siteName: "CapaciteEmprunt",
+    siteName: "EmpruntCalcul",
     title: "Simulateur de capacité d'emprunt immobilier gratuit",
     description:
       "Calculez votre capacité d'emprunt immobilier selon la règle HCSF des 35 %. Simulation instantanée, partageable par lien.",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "CapaciteEmprunt — Simulateur de capacité d'emprunt immobilier gratuit",
+        alt: "EmpruntCalcul — Simulateur de capacité d'emprunt immobilier gratuit",
       },
     ],
   },

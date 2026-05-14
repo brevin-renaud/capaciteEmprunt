@@ -1,4 +1,4 @@
-interface HowToStep {
+﻿interface HowToStep {
   name: string;
   text: string;
 }
@@ -18,7 +18,7 @@ export default function HowToSchema({ name, description, steps, totalTime = "PT2
     description,
     inLanguage: "fr-FR",
     totalTime,
-    tool: [{ "@type": "HowToTool", name: "Simulateur CapaciteEmprunt" }],
+    tool: [{ "@type": "HowToTool", name: "Simulateur EmpruntCalcul" }],
     supply: [{ "@type": "HowToSupply", name: "Revenus nets mensuels" }],
     step: steps.map((step, index) => ({
       "@type": "HowToStep",

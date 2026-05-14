@@ -2,13 +2,13 @@ export default function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://www.capaciteemprunt.fr/#organization",
-    name: "CapaciteEmprunt",
-    alternateName: "Capacité Emprunt",
-    url: "https://www.capaciteemprunt.fr",
+    "@id": "https://www.empruntcalcul.fr/#organization",
+    name: "EmpruntCalcul",
+    alternateName: "Emprunt Calcul",
+    url: "https://www.empruntcalcul.fr",
     logo: {
       "@type": "ImageObject",
-      url: "https://www.capaciteemprunt.fr/og-image.png",
+      url: "https://www.empruntcalcul.fr/og-image.png",
       width: 1200,
       height: 630,
     },
@@ -24,7 +24,7 @@ export default function OrganizationSchema() {
       "frais de notaire",
       "prêt à taux zéro",
     ],
-    sameAs: ["https://www.capaciteemprunt.fr"],
+    sameAs: ["https://www.empruntcalcul.fr"],
   };
 
   return (

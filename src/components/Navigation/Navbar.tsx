@@ -51,7 +51,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          aria-label="CapaciteEmprunt — Accueil"
+          aria-label="EmpruntCalcul — Accueil"
           className="flex items-center gap-2 font-bold text-sm tracking-tight shrink-0"
           style={{ color: "var(--t-primary)" }}
         >
@@ -60,9 +60,9 @@ export default function Navbar() {
             className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black"
             style={{ background: "#003d2b", color: "#ffffff" }}
           >
-            CE
+            EC
           </span>
-          <span className="hidden sm:inline">CapaciteEmprunt</span>
+          <span className="hidden sm:inline">EmpruntCalcul</span>
         </Link>
 
         {/* Desktop nav */}

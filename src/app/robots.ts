@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+﻿import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/mentions-legales", "/confidentialite", "/a-propos"],
       },
     ],
-    sitemap: "https://www.capaciteemprunt.fr/sitemap.xml",
-    host: "https://www.capaciteemprunt.fr",
+    sitemap: "https://www.empruntcalcul.fr/sitemap.xml",
+    host: "https://www.empruntcalcul.fr",
   };
 }

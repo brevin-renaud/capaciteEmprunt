@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleSchema from "@/components/SEO/ArticleSchema";
 import BreadcrumbSchema from "@/components/SEO/BreadcrumbSchema";
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Frais de Notaire 2026 - Calcul Complet Neuf et Ancien",
     description: "Droits de mutation, émoluments, débours : calculez et anticipez vos frais de notaire selon le type de bien.",
-    url: "https://www.capaciteemprunt.fr/frais-de-notaire",
+    url: "https://www.empruntcalcul.fr/frais-de-notaire",
     type: "article",
     locale: "fr_FR",
   },
-  alternates: { canonical: "https://www.capaciteemprunt.fr/frais-de-notaire" },
+  alternates: { canonical: "https://www.empruntcalcul.fr/frais-de-notaire" },
 };
 
 const COMPOSITION_FRAIS = [
@@ -67,14 +67,14 @@ export default function FraisDeNotaire() {
       <ArticleSchema
         headline="Frais de Notaire 2026 - Calcul Complet Neuf et Ancien"
         description="Tout sur les frais de notaire 2026 : droits de mutation, émoluments, débours. Neuf (2,5 %) vs ancien (7,5 %) : impact sur votre apport et votre capacité d'emprunt."
-        url="https://www.capaciteemprunt.fr/frais-de-notaire"
+        url="https://www.empruntcalcul.fr/frais-de-notaire"
         datePublished="2025-01-15"
         dateModified="2026-05-05"
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.capaciteemprunt.fr" },
-          { name: "Frais de notaire", url: "https://www.capaciteemprunt.fr/frais-de-notaire" },
+          { name: "Accueil", url: "https://www.empruntcalcul.fr" },
+          { name: "Frais de notaire", url: "https://www.empruntcalcul.fr/frais-de-notaire" },
         ]}
       />
       <div className="max-w-4xl mx-auto">

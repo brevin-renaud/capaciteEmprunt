@@ -1,8 +1,8 @@
-import { ImageResponse } from "next/og";
+﻿import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "CapaciteEmprunt - Simulateur de capacité d'emprunt immobilier gratuit";
+  "EmpruntCalcul - Simulateur de capacité d'emprunt immobilier gratuit";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -85,7 +85,7 @@ export default function Image() {
               letterSpacing: "-0.5px",
             }}
           >
-            CapaciteEmprunt
+            EmpruntCalcul
           </span>
         </div>
 
@@ -193,7 +193,7 @@ export default function Image() {
               fontFamily: "system-ui",
             }}
           >
-            capaciteemprunt.fr
+            empruntcalcul.fr
           </span>
         </div>
       </div>
