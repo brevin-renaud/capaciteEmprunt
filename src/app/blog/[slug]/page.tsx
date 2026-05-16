@@ -26,16 +26,36 @@ export async function generateMetadata({
   const post = await getPostBySlugAsync(slug);
   if (!post) return {};
 
+  const postUrl = `https://www.empruntcalcul.fr/blog/${slug}`;
+
   return {
     title: post.title,
     description: post.description,
     openGraph: {
       title: post.title,
       description: post.description,
+      url: postUrl,
       type: 'article',
+      locale: 'fr_FR',
       publishedTime: post.publishedAt?.toISOString(),
+      modifiedTime: post.publishedAt?.toISOString(),
       authors: [post.author],
+      images: [
+        {
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: ['/og-image.png'],
+    },
+    alternates: { canonical: postUrl },
   };
 }
 
@@ -51,22 +71,52 @@ export default async function BlogPostPage({
   const similarPosts = await getSimilarPostsAsync(slug, post.category);
   const readingTime = post.content ? calculateReadingTime(post.content) : 1;
 
+  const postUrl = `https://www.empruntcalcul.fr/blog/${slug}`;
+
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
+    '@id': `${postUrl}#article`,
     headline: post.title,
     description: post.description,
-    author: { '@type': 'Organization', name: post.author },
+    url: postUrl,
+    inLanguage: 'fr-FR',
+    image: 'https://www.empruntcalcul.fr/og-image.png',
     datePublished: post.publishedAt?.toISOString(),
     dateModified: post.publishedAt?.toISOString(),
+    author: {
+      '@type': 'Organization',
+      name: post.author,
+      url: 'https://www.empruntcalcul.fr',
+    },
+    publisher: {
+      '@id': 'https://www.empruntcalcul.fr/#organization',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl,
+    },
+    isPartOf: { '@id': 'https://www.empruntcalcul.fr/#website' },
+    about: [
+      { '@type': 'Thing', name: "capacité d'emprunt immobilier" },
+      { '@type': 'Thing', name: 'crédit immobilier France' },
+    ],
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.empruntcalcul.fr' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.empruntcalcul.fr/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: postUrl },
+    ],
   };
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-10">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       {/* Breadcrumb */}
       <nav aria-label="Fil d'Ariane" className="flex items-center gap-1.5 text-xs mb-8" style={{ color: 'var(--t-muted)' }}>
@@ -74,7 +124,7 @@ export default async function BlogPostPage({
         <span>/</span>
         <Link href="/blog" className="hover:opacity-70 transition-opacity">Blog</Link>
         <span>/</span>
-        <span style={{ color: 'var(--t-secondary)' }} className="truncate max-w-[200px]">{post.title}</span>
+        <span style={{ color: 'var(--t-secondary)' }} className="truncate max-w-50">{post.title}</span>
       </nav>
 
       {/* Article header */}

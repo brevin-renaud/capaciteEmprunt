@@ -7,15 +7,6 @@ export const metadata: Metadata = {
   title: "Capacité d'Emprunt 2026 : Guide Complet pour Votre Projet Immobilier",
   description:
     "Guide complet sur le calcul de la capacité d'emprunt immobilier en 2026 : formule d'annuité, règle HCSF des 35 %, rôle de l'apport, durée et taux. Optimisez votre dossier bancaire.",
-  keywords: [
-    "guide capacité d'emprunt",
-    "comment calculer capacité d'emprunt",
-    "formule annuité prêt immobilier",
-    "règle HCSF 35 pour cent",
-    "optimiser dossier bancaire",
-    "variables crédit immobilier",
-    "apport personnel immobilier",
-  ],
   openGraph: {
     title: "Capacité d'Emprunt 2026 : Guide Complet pour Votre Projet Immobilier",
     description: "Guide complet : formule, HCSF, apport, durée, taux - tout pour calculer et optimiser votre capacité d'emprunt.",

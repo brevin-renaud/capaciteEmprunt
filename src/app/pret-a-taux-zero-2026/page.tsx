@@ -8,15 +8,6 @@ export const metadata: Metadata = {
   title: "Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité",
   description:
     "Tout savoir sur le Prêt à Taux Zéro 2026 : zones géographiques A, A bis, B1, B2, C, plafonds de ressources, quotité maximale et cumul avec un crédit immobilier classique.",
-  keywords: [
-    "prêt à taux zéro 2026",
-    "PTZ conditions 2026",
-    "éligibilité PTZ",
-    "zones PTZ A B C",
-    "plafonds ressources PTZ",
-    "quotité PTZ",
-    "prêt immobilier sans intérêts primo-accédant",
-  ],
   openGraph: {
     title: "Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité",
     description:

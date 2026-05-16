@@ -22,15 +22,6 @@ export const metadata: Metadata = {
   title: "Simulateur Capacité d'Emprunt Immobilier Gratuit - Calcul Instantané 2026",
   description:
     "Calculez gratuitement votre capacité d'emprunt immobilier en 2026. Formule HCSF officielle des 35 %, frais de notaire, comparatif d'années. Résultat instantané, aucune inscription.",
-  keywords: [
-    "simulateur capacité d'emprunt",
-    "calculateur prêt immobilier gratuit",
-    "combien puis-je emprunter",
-    "règle HCSF 35%",
-    "calcul mensualité crédit immobilier",
-    "capacité d'emprunt 2026",
-    "simulation emprunt immobilier",
-  ],
   openGraph: {
     title: "Simulateur Capacité d'Emprunt Immobilier Gratuit - Calcul Instantané 2026",
     description:

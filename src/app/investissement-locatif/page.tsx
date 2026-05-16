@@ -8,15 +8,6 @@ export const metadata: Metadata = {
   title: "Investissement Locatif 2026 - Capacité d'Emprunt et Calcul Différentiel",
   description:
     "Calculez votre capacité d'emprunt pour un investissement locatif en 2026 : méthode différentielle, revenus locatifs, cashflow, levier immobilier et fiscalité.",
-  keywords: [
-    "investissement locatif capacité d'emprunt",
-    "calcul différentiel investissement locatif",
-    "revenus locatifs crédit immobilier",
-    "cashflow immobilier",
-    "levier immobilier",
-    "fiscalité investissement locatif",
-    "rendement locatif 2026",
-  ],
   openGraph: {
     title: "Investissement Locatif 2026 - Capacité d'Emprunt et Calcul Différentiel",
     description: "Méthode différentielle, revenus locatifs, cashflow, fiscalité - tout pour réussir votre investissement immobilier.",

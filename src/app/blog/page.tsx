@@ -5,20 +5,74 @@ import { getAllPostsAsync, calculateReadingTime, formatDate } from '@/lib/blog';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Blog immobilier — Conseils et guides',
+  title: 'Blog Immobilier 2026 — Guides & Conseils Crédit Immobilier',
   description:
-    'Retrouvez nos articles sur la capacité d\'emprunt, les taux immobiliers, les frais de notaire et tous nos conseils pour votre projet immobilier.',
+    "Guides pratiques sur la capacité d'emprunt immobilier, les taux de crédit 2026, les frais de notaire et toutes les aides primo-accédant pour réussir votre projet immobilier.",
   openGraph: {
-    title: 'Blog — CapaciteEmprunt',
-    description: 'Conseils, guides et actualités sur l\'immobilier et le crédit.',
+    title: "Blog Immobilier — Guides & Conseils | EmpruntCalcul",
+    description: "Guides pratiques sur la capacité d'emprunt, les taux de crédit et votre projet immobilier en France.",
+    url: "https://www.empruntcalcul.fr/blog",
+    type: "website",
+    locale: "fr_FR",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Blog EmpruntCalcul — Guides immobiliers et crédit",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog Immobilier — Guides & Conseils | EmpruntCalcul",
+    description: "Guides pratiques sur la capacité d'emprunt, les taux et votre projet immobilier.",
+    images: ["/og-image.png"],
+  },
+  alternates: { canonical: "https://www.empruntcalcul.fr/blog" },
 };
 
 export default async function BlogPage() {
   const posts = await getAllPostsAsync();
 
+  const blogListingSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://www.empruntcalcul.fr/blog",
+    name: "Blog Immobilier — Guides & Conseils EmpruntCalcul",
+    description: "Guides pratiques sur la capacité d'emprunt, les taux de crédit et votre projet immobilier en France.",
+    url: "https://www.empruntcalcul.fr/blog",
+    inLanguage: "fr-FR",
+    isPartOf: { "@id": "https://www.empruntcalcul.fr/#website" },
+    publisher: { "@id": "https://www.empruntcalcul.fr/#organization" },
+    ...(posts.length > 0 && {
+      mainEntity: {
+        "@type": "ItemList",
+        name: "Articles du blog immobilier EmpruntCalcul",
+        numberOfItems: posts.length,
+        itemListElement: posts.map((post, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `https://www.empruntcalcul.fr/blog/${post.slug}`,
+          name: post.title,
+        })),
+      },
+    }),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.empruntcalcul.fr" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.empruntcalcul.fr/blog" },
+    ],
+  };
+
   return (
     <main className="max-w-5xl mx-auto px-4 py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListingSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {/* Header */}
       <div className="mb-10">
         <div
