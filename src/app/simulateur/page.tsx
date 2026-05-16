@@ -32,14 +32,6 @@ export const metadata: Metadata = {
   title: "Simulateur de Capacité d'Emprunt Immobilier - Calcul Instantané 2026",
   description:
     "Calculez votre capacité d'emprunt immobilier en temps réel. Règle HCSF 35 %, frais de notaire, comparaison 15/20/25 ans. Résultat immédiat, lien partageable.",
-  keywords: [
-    "simulateur capacité d'emprunt",
-    "calculateur prêt immobilier en ligne",
-    "calcul mensualité crédit immobilier",
-    "outil capacité d'emprunt HCSF",
-    "simulation prêt immobilier gratuit",
-    "optimisation prêt immobilier",
-  ],
   openGraph: {
     title: "Simulateur de Capacité d'Emprunt Immobilier - Calcul Instantané",
     description: "Calculez votre capacité d'emprunt immobilier en temps réel selon la règle HCSF des 35 %.",

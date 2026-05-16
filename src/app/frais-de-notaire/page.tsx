@@ -7,15 +7,6 @@ export const metadata: Metadata = {
   title: "Frais de Notaire 2026 - Calcul Complet Neuf et Ancien",
   description:
     "Tout sur les frais de notaire 2026 : droits de mutation, émoluments, débours. Neuf (2,5 %) vs ancien (7,5 %) : impact sur votre apport et votre capacité d'emprunt.",
-  keywords: [
-    "frais de notaire 2026",
-    "calcul frais notaire",
-    "frais notaire achat immobilier",
-    "droits de mutation",
-    "frais notaire neuf vs ancien",
-    "émoluments notaire",
-    "combien coûtent les frais de notaire",
-  ],
   openGraph: {
     title: "Frais de Notaire 2026 - Calcul Complet Neuf et Ancien",
     description: "Droits de mutation, émoluments, débours : calculez et anticipez vos frais de notaire selon le type de bien.",

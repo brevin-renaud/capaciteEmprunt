@@ -8,15 +8,6 @@ export const metadata: Metadata = {
   title: "Taux Immobilier 2026 - Baromètre des Taux de Crédit par Durée et Profil",
   description:
     "Consultez les taux de crédit immobilier en mai 2026 selon la durée (15, 20, 25 ans) et le profil emprunteur. Conseils pour négocier le meilleur taux avec votre banque ou un courtier.",
-  keywords: [
-    "taux immobilier 2026",
-    "taux crédit immobilier mai 2026",
-    "baromètre taux immobilier",
-    "taux prêt immobilier 20 ans",
-    "meilleur taux immobilier",
-    "négocier taux crédit immobilier",
-    "taux fixe variable immobilier",
-  ],
   openGraph: {
     title: "Taux Immobilier 2026 - Baromètre des Taux de Crédit",
     description: "Taux actuels par durée et profil emprunteur + conseils pour obtenir le meilleur taux en 2026.",

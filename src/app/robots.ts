@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/mentions-legales", "/confidentialite", "/a-propos"],
+        disallow: ["/admin/", "/api/admin/"],
       },
     ],
     sitemap: "https://www.empruntcalcul.fr/sitemap.xml",

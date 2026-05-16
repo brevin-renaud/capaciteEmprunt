@@ -7,15 +7,6 @@ export const metadata: Metadata = {
   title: "Primo-Accédant 2026 - Toutes les Aides pour Votre Premier Achat Immobilier",
   description:
     "Prêt à Taux Zéro, Action Logement, TVA réduite, exonération taxe foncière… Toutes les aides primo-accédants 2026 pour maximiser votre budget immobilier et concrétiser votre premier achat.",
-  keywords: [
-    "primo-accédant 2026",
-    "aides premier achat immobilier",
-    "prêt à taux zéro primo-accédant",
-    "action logement primo-accédant",
-    "TVA réduite logement neuf",
-    "avantages primo-accédant banque",
-    "dérogation HCSF primo-accédant",
-  ],
   openGraph: {
     title: "Primo-Accédant 2026 - Toutes les Aides pour Votre Premier Achat Immobilier",
     description: "PTZ, Action Logement, TVA réduite - toutes les aides disponibles pour les primo-accédants en 2026.",
