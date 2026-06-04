@@ -1,76 +1,75 @@
 import { MetadataRoute } from "next";
-import { getAllSlugsAsync } from "@/lib/blog";
+import { getAllPostsForSitemapAsync } from "@/lib/blog";
 
 const BASE_URL = "https://www.empruntcalcul.fr";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
-  const blogSlugs = await getAllSlugsAsync();
+  const blogPosts = await getAllPostsForSitemapAsync();
 
   return [
     {
       url: BASE_URL,
-      lastModified: now,
+      lastModified: new Date("2026-05-10"),
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${BASE_URL}/simulateur`,
-      lastModified: now,
+      lastModified: new Date("2026-05-10"),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/faq`,
-      lastModified: now,
+      lastModified: new Date("2026-05-05"),
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${BASE_URL}/guide-capacite-emprunt`,
-      lastModified: now,
+      lastModified: new Date("2026-05-05"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/taux-immobilier-2026`,
-      lastModified: now,
+      lastModified: new Date("2026-05-10"),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/primo-accedant`,
-      lastModified: now,
+      lastModified: new Date("2026-05-05"),
       changeFrequency: "monthly",
       priority: 0.75,
     },
     {
       url: `${BASE_URL}/pret-a-taux-zero-2026`,
-      lastModified: now,
+      lastModified: new Date("2026-05-05"),
       changeFrequency: "monthly",
       priority: 0.75,
     },
     {
       url: `${BASE_URL}/frais-de-notaire`,
-      lastModified: now,
+      lastModified: new Date("2026-05-05"),
       changeFrequency: "monthly",
       priority: 0.75,
     },
     {
       url: `${BASE_URL}/investissement-locatif`,
-      lastModified: now,
+      lastModified: new Date("2026-05-05"),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${BASE_URL}/blog`,
-      lastModified: now,
+      lastModified: blogPosts.length > 0 ? blogPosts[0].updatedAt : new Date("2026-01-01"),
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    ...blogSlugs.map((slug) => ({
-      url: `${BASE_URL}/blog/${slug}`,
-      lastModified: now,
+    ...blogPosts.map((post) => ({
+      url: `${BASE_URL}/blog/${post.slug}`,
+      lastModified: post.updatedAt,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),

@@ -15,6 +15,20 @@ export const metadata: Metadata = {
     url: "https://www.empruntcalcul.fr/pret-a-taux-zero-2026",
     type: "article",
     locale: "fr_FR",
+    images: [
+      {
+        url: "https://www.empruntcalcul.fr/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Prêt à Taux Zéro 2026 : zones, conditions, éligibilité — EmpruntCalcul",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité",
+    description: "Zones A/B/C, plafonds de ressources et quotités - tout comprendre sur le PTZ pour les primo-accédants en 2026.",
+    images: ["https://www.empruntcalcul.fr/og-image.png"],
   },
   alternates: { canonical: "https://www.empruntcalcul.fr/pret-a-taux-zero-2026" },
 };
