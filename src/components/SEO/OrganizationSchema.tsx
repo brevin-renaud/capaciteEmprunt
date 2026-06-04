@@ -9,11 +9,11 @@ export default function OrganizationSchema() {
     logo: {
       "@type": "ImageObject",
       "@id": "https://www.empruntcalcul.fr/#logo",
-      url: "https://www.empruntcalcul.fr/og-image.png",
-      contentUrl: "https://www.empruntcalcul.fr/og-image.png",
-      width: 1200,
-      height: 630,
-      caption: "EmpruntCalcul — Simulateur de capacité d'emprunt immobilier",
+      url: "https://www.empruntcalcul.fr/apple-icon.png",
+      contentUrl: "https://www.empruntcalcul.fr/apple-icon.png",
+      width: 180,
+      height: 180,
+      caption: "EmpruntCalcul",
     },
     description:
       "Simulateur gratuit de capacité d'emprunt immobilier pour la France. Formule HCSF officielle des 35 %, frais de notaire, comparatif 15/20/25 ans.",

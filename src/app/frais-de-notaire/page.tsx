@@ -13,6 +13,20 @@ export const metadata: Metadata = {
     url: "https://www.empruntcalcul.fr/frais-de-notaire",
     type: "article",
     locale: "fr_FR",
+    images: [
+      {
+        url: "https://www.empruntcalcul.fr/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Frais de notaire 2026 : calcul neuf et ancien — EmpruntCalcul",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frais de Notaire 2026 - Calcul Complet Neuf et Ancien",
+    description: "Droits de mutation, émoluments, débours : calculez et anticipez vos frais de notaire selon le type de bien.",
+    images: ["https://www.empruntcalcul.fr/og-image.png"],
   },
   alternates: { canonical: "https://www.empruntcalcul.fr/frais-de-notaire" },
 };

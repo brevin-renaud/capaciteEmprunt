@@ -66,6 +66,18 @@ export async function getAllSlugsAsync(): Promise<string[]> {
   }
 }
 
+export async function getAllPostsForSitemapAsync(): Promise<{ slug: string; updatedAt: Date }[]> {
+  try {
+    return await prisma.article.findMany({
+      where: publishedFilter(),
+      select: { slug: true, updatedAt: true },
+      orderBy: { publishedAt: 'desc' },
+    });
+  } catch {
+    return [];
+  }
+}
+
 export async function getSimilarPostsAsync(
   currentSlug: string,
   category: string,

@@ -13,6 +13,20 @@ export const metadata: Metadata = {
     url: "https://www.empruntcalcul.fr/guide-capacite-emprunt",
     type: "article",
     locale: "fr_FR",
+    images: [
+      {
+        url: "https://www.empruntcalcul.fr/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Guide capacité d'emprunt immobilier 2026 — EmpruntCalcul",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Capacité d'Emprunt 2026 : Guide Complet pour Votre Projet Immobilier",
+    description: "Guide complet : formule, HCSF, apport, durée, taux - tout pour calculer et optimiser votre capacité d'emprunt.",
+    images: ["https://www.empruntcalcul.fr/og-image.png"],
   },
   alternates: { canonical: "https://www.empruntcalcul.fr/guide-capacite-emprunt" },
 };

@@ -147,14 +147,6 @@ const websiteSchema = {
   description: "Simulateur gratuit de capacité d'emprunt immobilier pour la France",
   inLanguage: "fr-FR",
   publisher: { "@id": "https://www.empruntcalcul.fr/#organization" },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: "https://www.empruntcalcul.fr/faq?q={search_term_string}",
-    },
-    "query-input": "required name=search_term_string",
-  },
 };
 
 const webAppSchema = {

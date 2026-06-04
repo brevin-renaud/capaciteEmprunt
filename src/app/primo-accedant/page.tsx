@@ -13,6 +13,20 @@ export const metadata: Metadata = {
     url: "https://www.empruntcalcul.fr/primo-accedant",
     type: "article",
     locale: "fr_FR",
+    images: [
+      {
+        url: "https://www.empruntcalcul.fr/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Aides primo-accédant 2026 : PTZ, Action Logement, TVA réduite — EmpruntCalcul",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Primo-Accédant 2026 - Toutes les Aides pour Votre Premier Achat Immobilier",
+    description: "PTZ, Action Logement, TVA réduite - toutes les aides disponibles pour les primo-accédants en 2026.",
+    images: ["https://www.empruntcalcul.fr/og-image.png"],
   },
   alternates: { canonical: "https://www.empruntcalcul.fr/primo-accedant" },
 };

@@ -14,6 +14,20 @@ export const metadata: Metadata = {
     url: "https://www.empruntcalcul.fr/investissement-locatif",
     type: "article",
     locale: "fr_FR",
+    images: [
+      {
+        url: "https://www.empruntcalcul.fr/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Investissement locatif 2026 : capacité d'emprunt et calcul différentiel — EmpruntCalcul",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Investissement Locatif 2026 - Capacité d'Emprunt et Calcul Différentiel",
+    description: "Méthode différentielle, revenus locatifs, cashflow, fiscalité - tout pour réussir votre investissement immobilier.",
+    images: ["https://www.empruntcalcul.fr/og-image.png"],
   },
   alternates: { canonical: "https://www.empruntcalcul.fr/investissement-locatif" },
 };

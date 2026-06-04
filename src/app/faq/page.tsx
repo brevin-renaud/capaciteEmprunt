@@ -15,6 +15,20 @@ export const metadata: Metadata = {
     url: "https://www.empruntcalcul.fr/faq",
     type: "website",
     locale: "fr_FR",
+    images: [
+      {
+        url: "https://www.empruntcalcul.fr/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "FAQ capacité d'emprunt immobilier — EmpruntCalcul",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ Capacité d'Emprunt - 32 Questions & Réponses par Thème",
+    description: "Réponses claires sur la capacité d'emprunt : HCSF, apport, crédits, taux, durée et profils spécifiques.",
+    images: ["https://www.empruntcalcul.fr/og-image.png"],
   },
   alternates: { canonical: "https://www.empruntcalcul.fr/faq" },
 };

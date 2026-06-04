@@ -30,15 +30,7 @@ export default function ArticleSchema({
       name: "EmpruntCalcul",
       url: "https://www.empruntcalcul.fr",
     },
-    publisher: {
-      "@type": "Organization",
-      name: "EmpruntCalcul",
-      url: "https://www.empruntcalcul.fr",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://www.empruntcalcul.fr/og-image.png",
-      },
-    },
+    publisher: { "@id": "https://www.empruntcalcul.fr/#organization" },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": url,
