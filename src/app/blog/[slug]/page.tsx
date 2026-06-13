@@ -24,7 +24,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostBySlugAsync(slug);
-  if (!post) return {};
+  if (!post) return { robots: { index: false, follow: false } };
 
   const postUrl = `https://www.empruntcalcul.fr/blog/${slug}`;
 
