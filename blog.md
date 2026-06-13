@@ -116,15 +116,27 @@ Chaque sujet doit être traité avec un angle original, une information actionne
 
 ### Format de chaque article
 
-Chaque article doit inclure :
+Chaque fichier doit être sauvegardé dans le dossier `drafts/` à la racine du projet, avec l'extension `.md`.
+
+**Nom de fichier conseillé :** `NN-slug-de-l-article.md` (ex : `12-assurance-emprunteur-cout-reel.md`)
+
+Le fichier doit obligatoirement commencer par un bloc frontmatter YAML entre deux lignes `---` :
 
 ```
-slug: [slug-en-kebab-case]
-title: [Titre optimisé SEO, entre 50 et 65 caractères]
-description: [Meta description de 140 à 155 caractères, avec le mot-clé principal]
+---
+slug: assurance-emprunteur-cout-reel-20-ans     ← obligatoire · minuscules, chiffres, tirets uniquement
+title: L'assurance emprunteur : combien ça coûte vraiment sur 20 ans   ← obligatoire · 50-65 caractères
+description: Taux, capital initial ou restant dû, délégation…           ← obligatoire · 140-155 caractères
+category: Immobilier                            ← optionnel · défaut : Immobilier
+author: CapaciteEmprunt                         ← optionnel · défaut : CapaciteEmprunt
+---
+
+Contenu markdown ici (sans H1 — le titre est géré par le site)
 ```
 
-Le contenu doit être rédigé en **MDX** (Markdown étendu, compatible avec des composants React si nécessaire, mais du Markdown standard est suffisant pour les articles).
+> **Règles sur le slug :** uniquement des lettres minuscules sans accent, des chiffres et des tirets (`-`). Pas d'espaces, pas de majuscules, pas de caractères spéciaux. Le slug doit être unique sur le blog.
+
+Le contenu doit être rédigé en Markdown standard (pas besoin de composants React).
 
 ### Contraintes de rédaction
 
@@ -161,13 +173,25 @@ Chaque article doit apporter **au moins une information que l'on ne trouve pas f
 
 ### Exemple de structure type
 
-```mdx
+```md
 ---
 slug: combien-faut-il-gagner-pour-emprunter-200000-euros
 title: Combien faut-il gagner pour emprunter 200 000 € ?
 description: Salaire minimum, apport, taux d'endettement : on vous explique exactement ce que la banque regarde pour un emprunt de 200 000 €.
-contenu: format mdx pas de h1 (ne pas répéter le titre), pas de sommaire
+---
+
+Beaucoup d'emprunteurs arrivent en banque avec un chiffre en tête…
+
+## Ce que la banque regarde en premier
+
+…
+
+## Le calcul concret pour 200 000 €
+
+…
 ```
+
+> Pas de H1 dans le contenu (le titre est affiché automatiquement par le site). Pas de sommaire.
 
 ---
 

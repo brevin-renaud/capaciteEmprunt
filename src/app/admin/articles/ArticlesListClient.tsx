@@ -18,6 +18,13 @@ interface Article {
   updatedAt: string;
 }
 
+interface ScheduledResult {
+  id: string;
+  title: string;
+  slug: string;
+  scheduledPublishAt: string;
+}
+
 function ArticleStatus({ article }: { article: Article }) {
   const now = new Date();
 
@@ -52,10 +59,25 @@ function ArticleStatus({ article }: { article: Article }) {
   );
 }
 
+function formatScheduleDate(iso: string): string {
+  return new Intl.DateTimeFormat('fr-FR', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(new Date(iso));
+}
+
 export default function ArticlesListClient({ articles }: { articles: Article[] }) {
   const router = useRouter();
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [error, setError] = useState('');
+  const [importing, setImporting] = useState(false);
+  const [importResult, setImportResult] = useState<{ imported: { slug: string; title: string }[]; skipped: string[]; errors: { file: string; reason: string }[]; empty?: boolean } | null>(null);
+  const [generating, setGenerating] = useState(false);
+  const [scheduleResult, setScheduleResult] = useState<ScheduledResult[] | null>(null);
+
+  const draftCount = articles.filter((a) => a.isDraft).length;
 
   async function handleDelete(id: string, title: string) {
     if (!confirm(`Supprimer l'article "${title}" ? Cette action est irréversible.`)) return;
@@ -75,6 +97,56 @@ export default function ArticlesListClient({ articles }: { articles: Article[] }
       setError('Erreur réseau');
     } finally {
       setDeletingId(null);
+    }
+  }
+
+  async function handleImport() {
+    if (!confirm("Importer les fichiers .md du dossier drafts/ comme brouillons ?")) return;
+
+    setImporting(true);
+    setImportResult(null);
+
+    try {
+      const res = await fetch('/api/admin/articles/import', { method: 'POST' });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error ?? "Erreur lors de l'import");
+        return;
+      }
+
+      setImportResult(data);
+      if (data.imported.length > 0) router.refresh();
+    } catch {
+      setError('Erreur réseau');
+    } finally {
+      setImporting(false);
+    }
+  }
+
+  async function handleGenerate() {
+    if (draftCount === 0) return;
+    if (!confirm(`Planifier ${draftCount} brouillon${draftCount > 1 ? 's' : ''} chaque mercredi et samedi ?\n\nLes articles seront programmés à partir du prochain créneau disponible.`)) return;
+
+    setGenerating(true);
+    setError('');
+    setScheduleResult(null);
+
+    try {
+      const res = await fetch('/api/admin/articles/generate', { method: 'POST' });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error ?? 'Erreur lors de la planification');
+        return;
+      }
+
+      setScheduleResult(data.scheduled);
+      router.refresh();
+    } catch {
+      setError('Erreur réseau');
+    } finally {
+      setGenerating(false);
     }
   }
 
@@ -138,20 +210,117 @@ export default function ArticlesListClient({ articles }: { articles: Article[] }
             </h1>
             <p className="text-sm mt-0.5" style={{ color: 'var(--t-muted)' }}>
               {articles.length} article{articles.length !== 1 ? 's' : ''}
+              {draftCount > 0 && (
+                <span className="ml-2" style={{ color: '#ca8a04' }}>
+                  · {draftCount} brouillon{draftCount > 1 ? 's' : ''}
+                </span>
+              )}
             </p>
           </div>
-          <Link
-            href="/admin/articles/nouveau"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-opacity hover:opacity-90"
-            style={{ background: '#003d2b', color: '#ffffff' }}
-          >
-            + Nouvel article
-          </Link>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleImport}
+              disabled={importing}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
+              style={{ background: 'var(--bg-btn-secondary)', color: 'var(--t-secondary)', border: '1px solid var(--bd-btn-secondary)' }}
+            >
+              {importing ? 'Import…' : 'Importer drafts/'}
+            </button>
+            {draftCount > 0 && (
+              <button
+                onClick={handleGenerate}
+                disabled={generating}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
+                style={{ background: 'var(--bg-brand-dim)', color: 'var(--t-brand)', border: '1px solid var(--bd-brand)' }}
+              >
+                {generating ? 'Planification…' : `Générer le planning (${draftCount})`}
+              </button>
+            )}
+            <Link
+              href="/admin/articles/nouveau"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-opacity hover:opacity-90"
+              style={{ background: '#003d2b', color: '#ffffff' }}
+            >
+              + Nouvel article
+            </Link>
+          </div>
         </div>
 
         {error && (
           <div className="mb-4 px-4 py-3 rounded-lg text-sm" style={{ color: 'var(--t-warning)', background: 'var(--bg-warning)', border: '1px solid var(--bd-warning)' }}>
             {error}
+          </div>
+        )}
+
+        {/* Résultat import */}
+        {importResult && !importResult.empty && (
+          <div
+            className="mb-6 rounded-xl p-5"
+            style={{ background: 'var(--bg-card)', border: '1px solid var(--bd-card)' }}
+          >
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-sm font-semibold" style={{ color: 'var(--t-primary)' }}>
+                Import drafts/
+                {importResult.imported.length > 0 && <span className="ml-2" style={{ color: '#16a34a' }}>· {importResult.imported.length} importé{importResult.imported.length > 1 ? 's' : ''}</span>}
+                {importResult.skipped.length > 0 && <span className="ml-2" style={{ color: 'var(--t-muted)' }}>· {importResult.skipped.length} déjà présent{importResult.skipped.length > 1 ? 's' : ''}</span>}
+                {importResult.errors.length > 0 && <span className="ml-2" style={{ color: '#ef4444' }}>· {importResult.errors.length} erreur{importResult.errors.length > 1 ? 's' : ''}</span>}
+              </p>
+              <button onClick={() => setImportResult(null)} className="text-xs" style={{ color: 'var(--t-muted)' }}>Fermer</button>
+            </div>
+            {importResult.imported.length > 0 && (
+              <div className="flex flex-col gap-1 mb-2">
+                {importResult.imported.map((a) => (
+                  <p key={a.slug} className="text-xs" style={{ color: '#16a34a' }}>✓ {a.title}</p>
+                ))}
+              </div>
+            )}
+            {importResult.errors.length > 0 && (
+              <div className="flex flex-col gap-1">
+                {importResult.errors.map((e) => (
+                  <p key={e.file} className="text-xs" style={{ color: '#ef4444' }}>{e.file} — {e.reason}</p>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+        {importResult?.empty && (
+          <div
+            className="mb-4 px-4 py-3 rounded-lg text-sm"
+            style={{ background: 'var(--bg-card)', border: '1px solid var(--bd-card)', color: 'var(--t-muted)' }}
+          >
+            Aucun fichier .md trouvé dans <code>drafts/</code>.
+          </div>
+        )}
+
+        {/* Planning généré */}
+        {scheduleResult && scheduleResult.length > 0 && (
+          <div
+            className="mb-6 rounded-xl p-5"
+            style={{ background: 'var(--bg-brand-dim)', border: '1px solid var(--bd-brand)' }}
+          >
+            <p className="text-sm font-semibold mb-3" style={{ color: 'var(--t-brand)' }}>
+              Planning généré — {scheduleResult.length} article{scheduleResult.length > 1 ? 's' : ''} programmé{scheduleResult.length > 1 ? 's' : ''}
+            </p>
+            <div className="flex flex-col gap-2">
+              {scheduleResult.map((item) => (
+                <div key={item.id} className="flex items-center gap-3 text-sm">
+                  <span
+                    className="px-2 py-0.5 rounded-full text-xs font-medium shrink-0"
+                    style={{ background: 'rgba(99,102,241,0.15)', color: '#6366f1' }}
+                  >
+                    {formatScheduleDate(item.scheduledPublishAt)}
+                  </span>
+                  <span style={{ color: 'var(--t-primary)' }}>{item.title}</span>
+                </div>
+              ))}
+            </div>
+            <button
+              onClick={() => setScheduleResult(null)}
+              className="mt-3 text-xs"
+              style={{ color: 'var(--t-muted)' }}
+            >
+              Fermer
+            </button>
           </div>
         )}
 
@@ -200,6 +369,11 @@ export default function ArticlesListClient({ articles }: { articles: Article[] }
                   </p>
                   <p className="text-xs mt-0.5 truncate" style={{ color: 'var(--t-muted)' }}>
                     /{article.slug} · {article.author}
+                    {article.scheduledPublishAt && new Date(article.scheduledPublishAt) > new Date() && (
+                      <span style={{ color: '#6366f1' }}>
+                        {' · '}{formatScheduleDate(article.scheduledPublishAt)}
+                      </span>
+                    )}
                   </p>
                 </div>
 
