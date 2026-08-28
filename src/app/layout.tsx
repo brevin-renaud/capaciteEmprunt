@@ -23,10 +23,10 @@ export const metadata: Metadata = {
   },
   description:
     "Calculez gratuitement votre capacité d'emprunt immobilier. Formule HCSF 35 %, frais de notaire, comparatif 15/20/25 ans. Résultat instantané, aucune inscription.",
-  authors: [{ name: "EmpruntCalcul", url: "https://www.empruntcalcul.fr" }],
+  authors: [{ name: "EmpruntCalcul", url: "https://empruntcalcul.fr" }],
   creator: "EmpruntCalcul",
   publisher: "EmpruntCalcul",
-  metadataBase: new URL("https://www.empruntcalcul.fr"),
+  metadataBase: new URL("https://empruntcalcul.fr"),
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,

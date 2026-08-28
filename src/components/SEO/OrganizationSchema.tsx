@@ -2,15 +2,15 @@ export default function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://www.empruntcalcul.fr/#organization",
+    "@id": "https://empruntcalcul.fr/#organization",
     name: "EmpruntCalcul",
     alternateName: ["Emprunt Calcul", "EmpruntCalcul.fr"],
-    url: "https://www.empruntcalcul.fr",
+    url: "https://empruntcalcul.fr",
     logo: {
       "@type": "ImageObject",
-      "@id": "https://www.empruntcalcul.fr/#logo",
-      url: "https://www.empruntcalcul.fr/apple-icon.png",
-      contentUrl: "https://www.empruntcalcul.fr/apple-icon.png",
+      "@id": "https://empruntcalcul.fr/#logo",
+      url: "https://empruntcalcul.fr/apple-icon.png",
+      contentUrl: "https://empruntcalcul.fr/apple-icon.png",
       width: 180,
       height: 180,
       caption: "EmpruntCalcul",
@@ -44,7 +44,7 @@ export default function OrganizationSchema() {
           itemOffered: {
             "@type": "Service",
             name: "Simulateur de capacité d'emprunt immobilier",
-            url: "https://www.empruntcalcul.fr/simulateur",
+            url: "https://empruntcalcul.fr/simulateur",
             description:
               "Calcul instantané de capacité d'emprunt selon la règle HCSF des 35 %. Gratuit, sans inscription.",
           },
@@ -53,7 +53,7 @@ export default function OrganizationSchema() {
         },
       ],
     },
-    sameAs: ["https://www.empruntcalcul.fr"],
+    sameAs: ["https://empruntcalcul.fr"],
   };
 
   return (

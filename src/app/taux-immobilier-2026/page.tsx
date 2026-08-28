@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Taux Immobilier 2026 - Baromètre des Taux de Crédit",
     description: "Taux actuels par durée et profil emprunteur + conseils pour obtenir le meilleur taux en 2026.",
-    url: "https://www.empruntcalcul.fr/taux-immobilier-2026",
+    url: "https://empruntcalcul.fr/taux-immobilier-2026",
     type: "article",
     locale: "fr_FR",
     images: [
       {
-        url: "https://www.empruntcalcul.fr/og-image.png",
+        url: "https://empruntcalcul.fr/og-image.png",
         width: 1200,
         height: 630,
         alt: "Taux immobilier 2026 par durée et profil — EmpruntCalcul",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Taux Immobilier 2026 - Baromètre des Taux de Crédit",
     description: "Taux actuels par durée et profil emprunteur + conseils pour obtenir le meilleur taux en 2026.",
-    images: ["https://www.empruntcalcul.fr/og-image.png"],
+    images: ["https://empruntcalcul.fr/og-image.png"],
   },
-  alternates: { canonical: "https://www.empruntcalcul.fr/taux-immobilier-2026" },
+  alternates: { canonical: "https://empruntcalcul.fr/taux-immobilier-2026" },
 };
 
 const TAUX_PAR_DUREE = [
@@ -71,14 +71,14 @@ export default function TauxImmobilier2026() {
       <ArticleSchema
         headline="Taux Immobilier 2026 - Baromètre des Taux de Crédit par Durée et Profil"
         description="Consultez les taux de crédit immobilier en mai 2026 selon la durée (15, 20, 25 ans) et le profil emprunteur. Conseils pour négocier le meilleur taux."
-        url="https://www.empruntcalcul.fr/taux-immobilier-2026"
+        url="https://empruntcalcul.fr/taux-immobilier-2026"
         datePublished="2025-01-15"
         dateModified="2026-05-05"
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.empruntcalcul.fr" },
-          { name: "Taux immobilier 2026", url: "https://www.empruntcalcul.fr/taux-immobilier-2026" },
+          { name: "Accueil", url: "https://empruntcalcul.fr" },
+          { name: "Taux immobilier 2026", url: "https://empruntcalcul.fr/taux-immobilier-2026" },
         ]}
       />
       <div className="max-w-4xl mx-auto">

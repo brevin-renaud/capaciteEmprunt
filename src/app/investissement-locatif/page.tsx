@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Investissement Locatif 2026 - Capacité d'Emprunt et Calcul Différentiel",
     description: "Méthode différentielle, revenus locatifs, cashflow, fiscalité - tout pour réussir votre investissement immobilier.",
-    url: "https://www.empruntcalcul.fr/investissement-locatif",
+    url: "https://empruntcalcul.fr/investissement-locatif",
     type: "article",
     locale: "fr_FR",
     images: [
       {
-        url: "https://www.empruntcalcul.fr/og-image.png",
+        url: "https://empruntcalcul.fr/og-image.png",
         width: 1200,
         height: 630,
         alt: "Investissement locatif 2026 : capacité d'emprunt et calcul différentiel — EmpruntCalcul",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Investissement Locatif 2026 - Capacité d'Emprunt et Calcul Différentiel",
     description: "Méthode différentielle, revenus locatifs, cashflow, fiscalité - tout pour réussir votre investissement immobilier.",
-    images: ["https://www.empruntcalcul.fr/og-image.png"],
+    images: ["https://empruntcalcul.fr/og-image.png"],
   },
-  alternates: { canonical: "https://www.empruntcalcul.fr/investissement-locatif" },
+  alternates: { canonical: "https://empruntcalcul.fr/investissement-locatif" },
 };
 
 export default function InvestissementLocatif() {
@@ -38,14 +38,14 @@ export default function InvestissementLocatif() {
       <ArticleSchema
         headline="Investissement Locatif 2026 - Capacité d'Emprunt et Calcul Différentiel"
         description="Calculez votre capacité d'emprunt pour un investissement locatif en 2026 : méthode différentielle, revenus locatifs, cashflow, levier immobilier et fiscalité."
-        url="https://www.empruntcalcul.fr/investissement-locatif"
+        url="https://empruntcalcul.fr/investissement-locatif"
         datePublished="2025-01-15"
         dateModified="2026-05-05"
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.empruntcalcul.fr" },
-          { name: "Investissement locatif", url: "https://www.empruntcalcul.fr/investissement-locatif" },
+          { name: "Accueil", url: "https://empruntcalcul.fr" },
+          { name: "Investissement locatif", url: "https://empruntcalcul.fr/investissement-locatif" },
         ]}
       />
       <div className="max-w-4xl mx-auto">

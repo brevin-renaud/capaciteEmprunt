@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllPostsForSitemapAsync } from "@/lib/blog";
 
-const BASE_URL = "https://www.empruntcalcul.fr";
+const BASE_URL = "https://empruntcalcul.fr";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogPosts = await getAllPostsForSitemapAsync();

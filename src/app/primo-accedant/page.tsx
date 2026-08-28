@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Primo-Accédant 2026 - Toutes les Aides pour Votre Premier Achat Immobilier",
     description: "PTZ, Action Logement, TVA réduite - toutes les aides disponibles pour les primo-accédants en 2026.",
-    url: "https://www.empruntcalcul.fr/primo-accedant",
+    url: "https://empruntcalcul.fr/primo-accedant",
     type: "article",
     locale: "fr_FR",
     images: [
       {
-        url: "https://www.empruntcalcul.fr/og-image.png",
+        url: "https://empruntcalcul.fr/og-image.png",
         width: 1200,
         height: 630,
         alt: "Aides primo-accédant 2026 : PTZ, Action Logement, TVA réduite — EmpruntCalcul",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Primo-Accédant 2026 - Toutes les Aides pour Votre Premier Achat Immobilier",
     description: "PTZ, Action Logement, TVA réduite - toutes les aides disponibles pour les primo-accédants en 2026.",
-    images: ["https://www.empruntcalcul.fr/og-image.png"],
+    images: ["https://empruntcalcul.fr/og-image.png"],
   },
-  alternates: { canonical: "https://www.empruntcalcul.fr/primo-accedant" },
+  alternates: { canonical: "https://empruntcalcul.fr/primo-accedant" },
 };
 
 const AIDES = [
@@ -122,14 +122,14 @@ export default function PrimoAccedant() {
       <ArticleSchema
         headline="Primo-Accédant 2026 - Toutes les Aides pour Votre Premier Achat Immobilier"
         description="Prêt à Taux Zéro, Action Logement, TVA réduite, exonération taxe foncière… Toutes les aides primo-accédants 2026 pour maximiser votre budget immobilier."
-        url="https://www.empruntcalcul.fr/primo-accedant"
+        url="https://empruntcalcul.fr/primo-accedant"
         datePublished="2025-01-15"
         dateModified="2026-05-05"
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.empruntcalcul.fr" },
-          { name: "Guide primo-accédant", url: "https://www.empruntcalcul.fr/primo-accedant" },
+          { name: "Accueil", url: "https://empruntcalcul.fr" },
+          { name: "Guide primo-accédant", url: "https://empruntcalcul.fr/primo-accedant" },
         ]}
       />
       <div className="max-w-4xl mx-auto">

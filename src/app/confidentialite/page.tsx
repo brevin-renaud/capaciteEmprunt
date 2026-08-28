@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Politique de confidentialité - EmpruntCalcul",
   description:
     "Politique de confidentialité de EmpruntCalcul : zéro donnée collectée, calculs 100 % côté navigateur, aucun cookie publicitaire.",
-  alternates: { canonical: "https://www.empruntcalcul.fr/confidentialite" },
+  alternates: { canonical: "https://empruntcalcul.fr/confidentialite" },
   robots: { index: false, follow: false },
 };
 

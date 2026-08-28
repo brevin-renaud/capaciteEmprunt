@@ -12,12 +12,12 @@ export const metadata: Metadata = {
     title: "FAQ Capacité d'Emprunt - 32 Questions & Réponses par Thème",
     description:
       "Réponses claires sur la capacité d'emprunt : HCSF, apport, crédits, taux, durée et profils spécifiques.",
-    url: "https://www.empruntcalcul.fr/faq",
+    url: "https://empruntcalcul.fr/faq",
     type: "website",
     locale: "fr_FR",
     images: [
       {
-        url: "https://www.empruntcalcul.fr/og-image.png",
+        url: "https://empruntcalcul.fr/og-image.png",
         width: 1200,
         height: 630,
         alt: "FAQ capacité d'emprunt immobilier — EmpruntCalcul",
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FAQ Capacité d'Emprunt - 32 Questions & Réponses par Thème",
     description: "Réponses claires sur la capacité d'emprunt : HCSF, apport, crédits, taux, durée et profils spécifiques.",
-    images: ["https://www.empruntcalcul.fr/og-image.png"],
+    images: ["https://empruntcalcul.fr/og-image.png"],
   },
-  alternates: { canonical: "https://www.empruntcalcul.fr/faq" },
+  alternates: { canonical: "https://empruntcalcul.fr/faq" },
 };
 
 export default function FAQPage() {
@@ -39,8 +39,8 @@ export default function FAQPage() {
       <FAQSchema items={FAQ_ITEMS} />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.empruntcalcul.fr" },
-          { name: "FAQ", url: "https://www.empruntcalcul.fr/faq" },
+          { name: "Accueil", url: "https://empruntcalcul.fr" },
+          { name: "FAQ", url: "https://empruntcalcul.fr/faq" },
         ]}
       />
       <FAQClient />

@@ -4,7 +4,7 @@
  *
  * Usage :
  *   node scripts/import-drafts.mjs
- *   node scripts/import-drafts.mjs --url https://www.empruntcalcul.fr   (prod)
+ *   node scripts/import-drafts.mjs --url https://empruntcalcul.fr   (prod)
  *
  * Format des fichiers .md :
  *   ---

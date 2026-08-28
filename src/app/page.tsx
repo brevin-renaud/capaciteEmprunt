@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     title: "Simulateur Capacité d'Emprunt Immobilier Gratuit - Calcul Instantané 2026",
     description:
       "Calculez gratuitement votre capacité d'emprunt immobilier en 2026. Formule HCSF officielle des 35 %, frais de notaire, comparatif 15/20/25 ans.",
-    url: "https://www.empruntcalcul.fr",
+    url: "https://empruntcalcul.fr",
     type: "website",
     locale: "fr_FR",
   },
-  alternates: { canonical: "https://www.empruntcalcul.fr" },
+  alternates: { canonical: "https://empruntcalcul.fr" },
 };
 
 const FEATURES = [
@@ -141,20 +141,20 @@ const PREVIEW_FAQ = FAQ_ITEMS.slice(0, 4);
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://www.empruntcalcul.fr/#website",
+  "@id": "https://empruntcalcul.fr/#website",
   name: "EmpruntCalcul",
-  url: "https://www.empruntcalcul.fr",
+  url: "https://empruntcalcul.fr",
   description: "Simulateur gratuit de capacité d'emprunt immobilier pour la France",
   inLanguage: "fr-FR",
-  publisher: { "@id": "https://www.empruntcalcul.fr/#organization" },
+  publisher: { "@id": "https://empruntcalcul.fr/#organization" },
 };
 
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "@id": "https://www.empruntcalcul.fr/simulateur#app",
+  "@id": "https://empruntcalcul.fr/simulateur#app",
   name: "Simulateur de capacité d'emprunt immobilier",
-  url: "https://www.empruntcalcul.fr/simulateur",
+  url: "https://empruntcalcul.fr/simulateur",
   applicationCategory: "FinanceApplication",
   applicationSubCategory: "Mortgage Calculator",
   operatingSystem: "Any",
@@ -178,7 +178,7 @@ const webAppSchema = {
   },
   description:
     "Calculez instantanément votre capacité d'emprunt immobilier avec la formule officielle HCSF des 35 %. Comparatif multi-durée, frais de notaire intégrés, résultat partageable.",
-  provider: { "@id": "https://www.empruntcalcul.fr/#organization" },
+  provider: { "@id": "https://empruntcalcul.fr/#organization" },
 };
 
 export default function HomePage() {
