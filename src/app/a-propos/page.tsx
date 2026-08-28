@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "À propos - EmpruntCalcul",
   description:
     "EmpruntCalcul est un simulateur gratuit de capacité d'emprunt immobilier, 100 % côté navigateur, sans collecte de données personnelles.",
-  alternates: { canonical: "https://www.empruntcalcul.fr/a-propos" },
+  alternates: { canonical: "https://empruntcalcul.fr/a-propos" },
   robots: { index: false, follow: false },
 };
 

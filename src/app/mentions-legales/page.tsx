@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Mentions légales - EmpruntCalcul",
   description: "Mentions légales du simulateur EmpruntCalcul : éditeur, hébergeur, propriété intellectuelle et responsabilité.",
-  alternates: { canonical: "https://www.empruntcalcul.fr/mentions-legales" },
+  alternates: { canonical: "https://empruntcalcul.fr/mentions-legales" },
   robots: { index: false, follow: false },
 };
 

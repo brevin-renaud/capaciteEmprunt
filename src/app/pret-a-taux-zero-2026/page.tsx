@@ -12,12 +12,12 @@ export const metadata: Metadata = {
     title: "Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité",
     description:
       "Zones A/B/C, plafonds de ressources et quotités - tout comprendre sur le Prêt à Taux Zéro pour les primo-accédants en 2026.",
-    url: "https://www.empruntcalcul.fr/pret-a-taux-zero-2026",
+    url: "https://empruntcalcul.fr/pret-a-taux-zero-2026",
     type: "article",
     locale: "fr_FR",
     images: [
       {
-        url: "https://www.empruntcalcul.fr/og-image.png",
+        url: "https://empruntcalcul.fr/og-image.png",
         width: 1200,
         height: 630,
         alt: "Prêt à Taux Zéro 2026 : zones, conditions, éligibilité — EmpruntCalcul",
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité",
     description: "Zones A/B/C, plafonds de ressources et quotités - tout comprendre sur le PTZ pour les primo-accédants en 2026.",
-    images: ["https://www.empruntcalcul.fr/og-image.png"],
+    images: ["https://empruntcalcul.fr/og-image.png"],
   },
-  alternates: { canonical: "https://www.empruntcalcul.fr/pret-a-taux-zero-2026" },
+  alternates: { canonical: "https://empruntcalcul.fr/pret-a-taux-zero-2026" },
 };
 
 const ZONES = [
@@ -79,14 +79,14 @@ export default function PTZ2026() {
       <ArticleSchema
         headline="Prêt à Taux Zéro 2026 (PTZ) - Conditions, Zones et Éligibilité"
         description="Guide complet sur le Prêt à Taux Zéro (PTZ) 2026 : conditions, zones géographiques, plafonds de ressources et intégration dans un plan de financement immobilier."
-        url="https://www.empruntcalcul.fr/pret-a-taux-zero-2026"
+        url="https://empruntcalcul.fr/pret-a-taux-zero-2026"
         datePublished="2025-01-15"
         dateModified="2026-05-05"
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.empruntcalcul.fr" },
-          { name: "Prêt à Taux Zéro 2026", url: "https://www.empruntcalcul.fr/pret-a-taux-zero-2026" },
+          { name: "Accueil", url: "https://empruntcalcul.fr" },
+          { name: "Prêt à Taux Zéro 2026", url: "https://empruntcalcul.fr/pret-a-taux-zero-2026" },
         ]}
       />
 

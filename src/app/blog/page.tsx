@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Blog Immobilier — Guides & Conseils | EmpruntCalcul",
     description: "Guides pratiques sur la capacité d'emprunt, les taux de crédit et votre projet immobilier en France.",
-    url: "https://www.empruntcalcul.fr/blog",
+    url: "https://empruntcalcul.fr/blog",
     type: "website",
     locale: "fr_FR",
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "Guides pratiques sur la capacité d'emprunt, les taux et votre projet immobilier.",
     images: ["/og-image.png"],
   },
-  alternates: { canonical: "https://www.empruntcalcul.fr/blog" },
+  alternates: { canonical: "https://empruntcalcul.fr/blog" },
 };
 
 export default async function BlogPage() {
@@ -38,13 +38,13 @@ export default async function BlogPage() {
   const blogListingSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": "https://www.empruntcalcul.fr/blog",
+    "@id": "https://empruntcalcul.fr/blog",
     name: "Blog Immobilier — Guides & Conseils EmpruntCalcul",
     description: "Guides pratiques sur la capacité d'emprunt, les taux de crédit et votre projet immobilier en France.",
-    url: "https://www.empruntcalcul.fr/blog",
+    url: "https://empruntcalcul.fr/blog",
     inLanguage: "fr-FR",
-    isPartOf: { "@id": "https://www.empruntcalcul.fr/#website" },
-    publisher: { "@id": "https://www.empruntcalcul.fr/#organization" },
+    isPartOf: { "@id": "https://empruntcalcul.fr/#website" },
+    publisher: { "@id": "https://empruntcalcul.fr/#organization" },
     ...(posts.length > 0 && {
       mainEntity: {
         "@type": "ItemList",
@@ -53,7 +53,7 @@ export default async function BlogPage() {
         itemListElement: posts.map((post, index) => ({
           "@type": "ListItem",
           position: index + 1,
-          url: `https://www.empruntcalcul.fr/blog/${post.slug}`,
+          url: `https://empruntcalcul.fr/blog/${post.slug}`,
           name: post.title,
         })),
       },
@@ -64,8 +64,8 @@ export default async function BlogPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.empruntcalcul.fr" },
-      { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.empruntcalcul.fr/blog" },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://empruntcalcul.fr" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://empruntcalcul.fr/blog" },
     ],
   };
 

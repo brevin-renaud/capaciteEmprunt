@@ -7,18 +7,18 @@ import BreadcrumbSchema from "@/components/SEO/BreadcrumbSchema";
 const loanServiceSchema = {
   "@context": "https://schema.org",
   "@type": "LoanService",
-  "@id": "https://www.empruntcalcul.fr/simulateur#service",
+  "@id": "https://empruntcalcul.fr/simulateur#service",
   name: "Simulateur de capacité d'emprunt immobilier",
   description:
     "Calculez instantanément votre capacité d'emprunt immobilier selon la règle HCSF des 35 %. Formule bancaire officielle, frais de notaire, comparatif 15/20/25 ans.",
   serviceType: "Mortgage Capacity Calculator",
   loanType: "https://schema.org/MortgageLoan",
-  url: "https://www.empruntcalcul.fr/simulateur",
+  url: "https://empruntcalcul.fr/simulateur",
   areaServed: { "@type": "Country", name: "France", "@id": "https://www.wikidata.org/wiki/Q142" },
   isAccessibleForFree: true,
   availableLanguage: { "@type": "Language", name: "French", alternateName: "fr" },
-  termsOfService: "https://www.empruntcalcul.fr/mentions-legales",
-  provider: { "@id": "https://www.empruntcalcul.fr/#organization" },
+  termsOfService: "https://empruntcalcul.fr/mentions-legales",
+  provider: { "@id": "https://empruntcalcul.fr/#organization" },
   offers: {
     "@type": "Offer",
     price: "0",
@@ -35,11 +35,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Simulateur de Capacité d'Emprunt Immobilier - Calcul Instantané",
     description: "Calculez votre capacité d'emprunt immobilier en temps réel selon la règle HCSF des 35 %.",
-    url: "https://www.empruntcalcul.fr/simulateur",
+    url: "https://empruntcalcul.fr/simulateur",
     type: "website",
     locale: "fr_FR",
   },
-  alternates: { canonical: "https://www.empruntcalcul.fr/simulateur" },
+  alternates: { canonical: "https://empruntcalcul.fr/simulateur" },
 };
 
 interface PageProps {
@@ -70,8 +70,8 @@ export default async function SimulateurPage({ searchParams }: PageProps) {
       />
       <BreadcrumbSchema
         items={[
-          { name: "Accueil", url: "https://www.empruntcalcul.fr" },
-          { name: "Simulateur", url: "https://www.empruntcalcul.fr/simulateur" },
+          { name: "Accueil", url: "https://empruntcalcul.fr" },
+          { name: "Simulateur", url: "https://empruntcalcul.fr/simulateur" },
         ]}
       />
       {/* Hero */}

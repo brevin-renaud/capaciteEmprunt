@@ -24,13 +24,13 @@ export default function ArticleSchema({
     datePublished,
     dateModified,
     inLanguage: "fr-FR",
-    image: image ?? "https://www.empruntcalcul.fr/og-image.png",
+    image: image ?? "https://empruntcalcul.fr/og-image.png",
     author: {
       "@type": "Organization",
       name: "EmpruntCalcul",
-      url: "https://www.empruntcalcul.fr",
+      url: "https://empruntcalcul.fr",
     },
-    publisher: { "@id": "https://www.empruntcalcul.fr/#organization" },
+    publisher: { "@id": "https://empruntcalcul.fr/#organization" },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": url,

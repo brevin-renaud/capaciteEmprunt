@@ -26,7 +26,7 @@ export async function generateMetadata({
   const post = await getPostBySlugAsync(slug);
   if (!post) return { robots: { index: false, follow: false } };
 
-  const postUrl = `https://www.empruntcalcul.fr/blog/${slug}`;
+  const postUrl = `https://empruntcalcul.fr/blog/${slug}`;
 
   return {
     title: post.title,
@@ -71,7 +71,7 @@ export default async function BlogPostPage({
   const similarPosts = await getSimilarPostsAsync(slug, post.category);
   const readingTime = post.content ? calculateReadingTime(post.content) : 1;
 
-  const postUrl = `https://www.empruntcalcul.fr/blog/${slug}`;
+  const postUrl = `https://empruntcalcul.fr/blog/${slug}`;
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -81,22 +81,22 @@ export default async function BlogPostPage({
     description: post.description,
     url: postUrl,
     inLanguage: 'fr-FR',
-    image: 'https://www.empruntcalcul.fr/og-image.png',
+    image: 'https://empruntcalcul.fr/og-image.png',
     datePublished: post.publishedAt?.toISOString(),
     dateModified: post.publishedAt?.toISOString(),
     author: {
       '@type': 'Organization',
       name: post.author,
-      url: 'https://www.empruntcalcul.fr',
+      url: 'https://empruntcalcul.fr',
     },
     publisher: {
-      '@id': 'https://www.empruntcalcul.fr/#organization',
+      '@id': 'https://empruntcalcul.fr/#organization',
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': postUrl,
     },
-    isPartOf: { '@id': 'https://www.empruntcalcul.fr/#website' },
+    isPartOf: { '@id': 'https://empruntcalcul.fr/#website' },
     about: [
       { '@type': 'Thing', name: "capacité d'emprunt immobilier" },
       { '@type': 'Thing', name: 'crédit immobilier France' },
@@ -107,8 +107,8 @@ export default async function BlogPostPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.empruntcalcul.fr' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.empruntcalcul.fr/blog' },
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://empruntcalcul.fr' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://empruntcalcul.fr/blog' },
       { '@type': 'ListItem', position: 3, name: post.title, item: postUrl },
     ],
   };
